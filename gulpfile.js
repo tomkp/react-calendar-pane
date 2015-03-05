@@ -1,20 +1,33 @@
 var gulp = require('gulp');
-var babel = require("gulp-babel");
+var sourcemaps = require('gulp-sourcemaps');
+var babel = require('gulp-babel');
 var clean = require('gulp-clean');
+var browserify = require('gulp-browserify');
+
 
 
 gulp.task('clean', function () {
-    return gulp.src(['./dist'], {read: false})
+    return gulp.src(['build', 'dist'], {read: false})
         .pipe(clean())
 });
 
 
+
 gulp.task('babel', ['clean'], function () {
-    return gulp.src('./src/*.js')
+    return gulp.src('src/*.js')
         .pipe(babel())
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('build'))
 });
 
+
+gulp.task('browserify', ['babel'], function() {
+    return gulp.src('build/Calendar.js')
+        .pipe(browserify())
+        .pipe(sourcemaps.init())
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest('dist'))
+        ;
+});
 
 gulp.task('watch', function () {
     return watch('./src/**/*', function () {
@@ -23,4 +36,4 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('default', ['babel']);
+gulp.task('default', ['browserify']);
