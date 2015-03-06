@@ -24,8 +24,8 @@ describe('Day', function() {
 
     it('should display as "active"', function() {
         console.info('should display as "active"');
-        var month = TU.findRenderedDOMComponentWithClass(Day, 'day');
-        expect(month.getDOMNode().className).toContain('active');
+        var day = TU.findRenderedDOMComponentWithClass(Day, 'day');
+        expect(day.getDOMNode().className).toContain('active');
     });
 
 
