@@ -14,7 +14,7 @@
     "calendar"
   ],
   "devDependencies": {
-    "babel-core": "^4.6.6",
+    "babel": "^4.6.6",
     "babel-jest": "^4.0.0",
     "gulp": "^3.8.11",
     "gulp-babel": "^4.0.0",
@@ -28,9 +28,12 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
   },
   "dependencies": {
+    "core-js": "^0.6.0",
     "moment": "^2.9.0",
     "normalize.css": "^3.0.2",
     "react": "^0.13.0-rc1"
