@@ -14,7 +14,6 @@
     "calendar"
   ],
   "devDependencies": {
-    "babel": "^4.6.6",
     "babel-core": "^4.6.6",
     "babel-jest": "^4.0.0",
     "gulp": "^3.8.11",
