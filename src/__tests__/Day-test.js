@@ -13,23 +13,23 @@ describe('Day', function() {
     };
 
     var date = moment("03/04/2015", "DD/MM/YYYY");
-    var Day = TU.renderIntoDocument(
+    var day = TU.renderIntoDocument(
         <Day date={date} actual={date} handleClick={handleClick} />
     );
 
 
     it('displays the correct day', function() {
         console.info('displays the correct day');
-        var day = TU.findRenderedDOMComponentWithClass(Day, 'day');
-        expect(day.getDOMNode().textContent).toEqual('03');
+        var component = TU.findRenderedDOMComponentWithClass(day, 'Day');
+        expect(component.getDOMNode().textContent).toEqual('3');
     });
 
 
-    //it('should display as "active"', function() {
-    //    console.info('should display as "active"');
-    //    var day = TU.findRenderedDOMComponentWithClass(Day, 'day');
-    //    expect(day.getDOMNode().className).toContain('active');
-    //});
+    it('should display as "active"', function() {
+        console.info('should display as "actual"');
+        var component = TU.findRenderedDOMComponentWithClass(day, 'Day');
+        expect(component.getDOMNode().className).toContain('actual');
+    });
 
 
 });

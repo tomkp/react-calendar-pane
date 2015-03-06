@@ -5,8 +5,8 @@ let Day = React.createClass({
 
     propTypes: {
         handleClick: React.PropTypes.func.isRequired,
-        date: React.PropTypes.string.isRequired,
-        actual: React.PropTypes.string.isRequired
+        date: React.PropTypes.object.isRequired,
+        actual: React.PropTypes.object.isRequired
     },
 
     render() {
