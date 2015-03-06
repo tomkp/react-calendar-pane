@@ -1,5 +1,4 @@
 jest.dontMock('../Calendar');
-//jest.dontMock('moment');
 
 var moment = require('moment');
 var React = require('react/addons');

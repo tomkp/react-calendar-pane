@@ -1,5 +1,4 @@
 jest.dontMock('../Day');
-//jest.dontMock('moment');
 
 var moment = require('moment');
 var React = require('react/addons');
@@ -22,11 +21,11 @@ describe('Day', function() {
     });
 
 
-    it('should display as "active"', function() {
-        console.info('should display as "active"');
-        var day = TU.findRenderedDOMComponentWithClass(Day, 'day');
-        expect(day.getDOMNode().className).toContain('active');
-    });
+    //it('should display as "active"', function() {
+    //    console.info('should display as "active"');
+    //    var day = TU.findRenderedDOMComponentWithClass(Day, 'day');
+    //    expect(day.getDOMNode().className).toContain('active');
+    //});
 
 
 });
