@@ -11,7 +11,7 @@ describe('Day', function() {
 
     var date = moment("03/04/2015", "DD/MM/YYYY");
     var Day = TU.renderIntoDocument(
-        <Day date={date} active={date} />
+        <Day date={date} actual={date} />
     );
 
 
