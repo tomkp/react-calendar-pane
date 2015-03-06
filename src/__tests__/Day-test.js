@@ -8,9 +8,13 @@ var Day = require('../Day');
 
 describe('Day', function() {
 
+    var handleClick = function(d) {
+        console.info('handle click', d);
+    };
+
     var date = moment("03/04/2015", "DD/MM/YYYY");
     var Day = TU.renderIntoDocument(
-        <Day date={date} actual={date} />
+        <Day date={date} actual={date} handleClick={handleClick} />
     );
 
 
