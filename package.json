@@ -28,9 +28,7 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "scripts": {
-    "test": "jest",
-    "compile": "babel -d lib/ src/",
-    "prepublish": "npm run compile"
+    "test": "jest"
   },
   "dependencies": {
     "core-js": "^0.6.0",
