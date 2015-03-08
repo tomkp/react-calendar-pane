@@ -5,12 +5,10 @@ var clean = require('gulp-clean');
 var browserify = require('gulp-browserify');
 
 
-
 gulp.task('clean', function () {
     return gulp.src(['build', 'dist'], {read: false})
         .pipe(clean())
 });
-
 
 
 gulp.task('babel', ['clean'], function () {
@@ -28,6 +26,7 @@ gulp.task('browserify', ['babel'], function() {
         .pipe(gulp.dest('dist'))
         ;
 });
+
 
 gulp.task('watch', function () {
     return watch('./src/**/*', function () {
