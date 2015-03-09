@@ -25,4 +25,4 @@ let Day = React.createClass({
 });
 
 
-module.exports = Day;
+export default Day;

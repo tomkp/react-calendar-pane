@@ -77,4 +77,4 @@ let Calendar = React.createClass({
 });
 
 
-module.exports = Calendar;
+export default Calendar;

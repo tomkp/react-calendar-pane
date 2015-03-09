@@ -8,4 +8,4 @@ let Week = React.createClass({
 });
 
 
-module.exports = Week;
+export default Week;

@@ -8,4 +8,4 @@ let DayOfWeek = React.createClass({
 });
 
 
-module.exports = DayOfWeek;
+export default DayOfWeek;
