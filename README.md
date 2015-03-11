@@ -5,14 +5,12 @@
 React calendar component in ES6
 
 
-## Example 1
-
-
-<div align="center">
-  <img src="docs/cap1.png" width=600 style="margin:1rem;" />
-</div>
-
 
 ```html
    <Calendar />
 ```
+
+<div align="center">
+  <img src="docs/cap1.png" style="margin:1rem;" />
+</div>
+
