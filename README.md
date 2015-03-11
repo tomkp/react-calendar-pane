@@ -4,7 +4,9 @@
 
 React calendar component in ES6
 
+Check out a [Demo](http://hard-to-find-door.surge.sh/)
 
+## Usage
 
 ```html
    <Calendar />
@@ -16,5 +18,5 @@ React calendar component in ES6
 
 
 
-[Demo](http://hard-to-find-door.surge.sh/)
+
 
