@@ -14,3 +14,7 @@ React calendar component in ES6
   <img src="docs/cap1.png" style="margin:1rem;" />
 </div>
 
+
+
+[Demo](http://hard-to-find-door.surge.sh/)
+
