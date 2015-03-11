@@ -14,8 +14,15 @@ let Day = React.createClass({
         if (this.props.actual.isSame(this.props.date, 'day')) {
             classes.push('actual');
         }
+        let style = {
+            cursor: 'pointer'
+        };
+        if (!this.props.isCurrentMonth) {
+            classes.push('other-month');
+        }
         return (
             <td className={classes.join(' ')}
+                style={style}
                 data-date={this.props.date.toISOString()}
                 onClick={this.props.handleClick}>
                 {this.props.date.format('D')}
