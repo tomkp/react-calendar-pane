@@ -31,6 +31,7 @@
   },
   "scripts": {
     "test": "jest",
+    "build": "browserify src/Calendar.js -t babelify --outfile dist/Calendar.js",
     "demo": "browserify demo/Example.js -t babelify --outfile demo/bundle.js"
   },
   "dependencies": {
