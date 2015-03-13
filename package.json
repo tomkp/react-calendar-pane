@@ -1,5 +1,5 @@
 {
-  "name": "react-calendars",
+  "name": "react-calendar-pane",
   "description": "React calendar component",
   "main": "dist/Calendar.js",
   "version": "0.0.1",
