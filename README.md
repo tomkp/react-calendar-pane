@@ -6,7 +6,22 @@ React calendar component in ES6
 
 Check out the [demo](http://hard-to-find-door.surge.sh/)
 
+
+install
+```npm install```
+
+run tests
+```npm test```
+
+build dist
+```npm run build```
+
+build the demo
+```npm run demo```
+
+
 ## Usage
+
 
 ```html
    <Calendar />
