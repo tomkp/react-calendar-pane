@@ -19,7 +19,8 @@
     "babelify": "^5.0.4",
     "browserify": "^9.0.3",
     "jest-cli": "^0.4.0",
-    "react-tools": "^0.13.0-rc1"
+    "react-tools": "^0.13.0-rc1",
+    "reactify": "^1.1.0"
   },
   "scripts": {
     "test": "jest",
@@ -35,6 +36,16 @@
     "scriptPreprocessor": "../preprocessor.js",
     "unmockedModulePathPatterns": [
       "react"
+    ]
+  },
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
     ]
   }
 }
