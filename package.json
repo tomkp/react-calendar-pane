@@ -19,13 +19,12 @@
     "babelify": "^5.0.4",
     "browserify": "^9.0.3",
     "jest-cli": "^0.4.0",
-    "react-tools": "^0.13.0-rc1",
-    "reactify": "^1.1.0"
+    "react-tools": "^0.13.0-rc1"
   },
   "scripts": {
     "test": "jest",
-    "build": "browserify src/Calendar.js -t babelify --outfile dist/Calendar.js",
-    "demo": "browserify demo/Example.js -t babelify --outfile demo/bundle.js"
+    "build": "browserify src/Calendar.js -t -o dist/Calendar.js",
+    "demo": "browserify demo/Example.js -t -o demo/bundle.js"
   },
   "dependencies": {
     "moment": "^2.9.0",
@@ -41,10 +40,7 @@
   "browserify": {
     "transform": [
       [
-        "reactify",
-        {
-          "es6": true
-        }
+        "babelify"
       ]
     ]
   }
