@@ -13,6 +13,10 @@
     "react-component",
     "calendar"
   ],
+  "dependencies": {
+    "moment": "^2.9.0",
+    "react": "^0.13.0-rc1"
+  },
   "devDependencies": {
     "babel-core": "^4.6.6",
     "babel-jest": "^4.0.0",
@@ -25,10 +29,6 @@
     "test": "jest",
     "build": "browserify src/Calendar.js -t -o dist/Calendar.js",
     "demo": "browserify demo/Example.js -t -o demo/bundle.js"
-  },
-  "dependencies": {
-    "moment": "^2.9.0",
-    "react": "^0.13.0-rc1"
   },
   "jest": {
     "rootDir": "./src",
