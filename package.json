@@ -11,7 +11,8 @@
   "keywords": [
     "react",
     "react-component",
-    "calendar"
+    "calendar",
+    "es6"
   ],
   "dependencies": {
     "moment": "^2.9.0",
