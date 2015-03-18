@@ -20,7 +20,6 @@ describe('Calendar', function() {
 
 
     it('displays the correct month', function() {
-        console.info('displays the correct month');
         var calendar = TU.renderIntoDocument(<Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />);
         var month = TU.findRenderedDOMComponentWithClass(calendar, 'month');
         expect(month.getDOMNode().textContent).to.equal('April');
