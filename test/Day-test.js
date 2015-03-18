@@ -1,9 +1,8 @@
-var moment = require('moment');
-var expect = require('expect.js');
-//import expect from 'expect.js';
-var React = require('react/addons');
-var TU = React.addons.TestUtils;
-var Day = require('../src/Day');
+import moment from 'moment';
+import expect from 'expect.js';
+import React from 'react/addons';
+let { TestUtils } = React.addons;
+import Day from '../src/Day';
 
 
 describe('Day', function() {
@@ -13,19 +12,19 @@ describe('Day', function() {
     };
 
     var date = moment("03/04/2015", "DD/MM/YYYY");
-    var day = TU.renderIntoDocument(
+    var day = TestUtils.renderIntoDocument(
         <Day date={date} actual={date} handleClick={handleClick} />
     );
 
 
     it('displays the correct day', function() {
-        var component = TU.findRenderedDOMComponentWithClass(day, 'Day');
+        var component = TestUtils.findRenderedDOMComponentWithClass(day, 'Day');
         //expect(component.getDOMNode().textContent).to.equal('3');
     });
 
 
     it('should display as "active"', function() {
-        //var component = TU.findRenderedDOMComponentWithClass(day, 'Day');
+        var component = TestUtils.findRenderedDOMComponentWithClass(day, 'Day');
         //expect(component.getDOMNode().className).to.contain('actual');
     });
 
