@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/tomkp/react-calendar.png)](https://travis-ci.org/tomkp/react-calendar)
 [![Coverage Status](https://coveralls.io/repos/tomkp/react-calendar/badge.svg?branch=master)](https://coveralls.io/r/tomkp/react-calendar?branch=master)
 
+<a align="right" href='https://coveralls.io/r/tomkp/react-calendar?branch=master'><img src='https://coveralls.io/repos/tomkp/react-calendar/badge.svg?branch=master' alt='Coverage Status' /></a>
+
 React calendar component in ES6
 
 Check out the [demo](http://hard-to-find-door.surge.sh/)
