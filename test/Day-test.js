@@ -19,14 +19,12 @@ describe('Day', function() {
 
 
     it('displays the correct day', function() {
-        console.info('displays the correct day');
-        //var component = TU.findRenderedDOMComponentWithClass(day, 'Day');
+        var component = TU.findRenderedDOMComponentWithClass(day, 'Day');
         //expect(component.getDOMNode().textContent).to.equal('3');
     });
 
 
     it('should display as "active"', function() {
-        console.info('should display as "actual"');
         //var component = TU.findRenderedDOMComponentWithClass(day, 'Day');
         //expect(component.getDOMNode().className).to.contain('actual');
     });
