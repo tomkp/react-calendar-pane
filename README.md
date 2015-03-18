@@ -1,8 +1,6 @@
 # react-calendar
 
-[![Build Status](https://travis-ci.org/tomkp/react-calendar.png)](https://travis-ci.org/tomkp/react-calendar)
-[![Coverage Status](https://coveralls.io/repos/tomkp/react-calendar/badge.svg?branch=master)](https://coveralls.io/r/tomkp/react-calendar?branch=master)
-
+<a href='https://travis-ci.org/tomkp/react-calendar'><img align="right" src='https://travis-ci.org/tomkp/react-calendar.png' alt='Build Status' /></a>
 <a href='https://coveralls.io/r/tomkp/react-calendar?branch=master'><img align="right" src='https://coveralls.io/repos/tomkp/react-calendar/badge.svg?branch=master' alt='Coverage Status' /></a>
 
 React calendar component in ES6
