@@ -20,23 +20,21 @@
   },
   "devDependencies": {
     "babel-core": "^4.6.6",
-    "babel-jest": "^4.0.0",
     "babelify": "^5.0.4",
     "browserify": "^9.0.3",
-    "jest-cli": "^0.4.0",
-    "react-tools": "^0.13.0-rc1"
+    "react-tools": "^0.13.0-rc1",
+    "coveralls": "^2.11.2",
+    "expect.js": "^0.3.1",
+    "express": "^4.12.2",
+    "mochify": "^2.6.0",
+    "mochify-istanbul": "^2.1.1"
   },
   "scripts": {
-    "test": "jest",
     "build": "browserify src/Calendar.js -t -o dist/Calendar.js",
-    "demo": "browserify demo/Example.js -t -o demo/bundle.js"
-  },
-  "jest": {
-    "rootDir": "./src",
-    "scriptPreprocessor": "../preprocessor.js",
-    "unmockedModulePathPatterns": [
-      "react"
-    ]
+    "demo": "browserify demo/Example.js -t -o demo/bundle.js",
+    "test": "mochify",
+    "test-watch": "mochify --watch",
+    "cover": "node cover.js && cat lcov.info | coveralls && rm lcov.info"
   },
   "browserify": {
     "transform": [
