@@ -1,7 +1,7 @@
-# react-calendar
-
 <a href='https://travis-ci.org/tomkp/react-calendar'><img align="right" src='https://travis-ci.org/tomkp/react-calendar.png' alt='Build Status' /></a>
 <a href='https://coveralls.io/r/tomkp/react-calendar?branch=master'><img align="right" src='https://coveralls.io/repos/tomkp/react-calendar/badge.svg?branch=master' alt='Coverage Status' /></a>
+
+# react-calendar
 
 React calendar component in ES6
 
