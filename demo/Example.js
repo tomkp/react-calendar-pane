@@ -4,9 +4,13 @@ import Calendar from '../src/Calendar';
 
 var Example = React.createClass({
 
+    onSelect: function (date) {
+        console.info('onSelect', date);
+    },
+
     render: function() {
         return (
-            <Calendar />
+            <Calendar onSelect={this.onSelect} />
         );
     }
 
