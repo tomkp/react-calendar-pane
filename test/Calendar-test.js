@@ -51,7 +51,7 @@ describe('Calendar', () => {
     });
 
 
-    it('should pass selected data to function', function(done) {
+    it('should trigger the callback with selected date when clicking a day', function(done) {
         var callback = function(selectedDate) {
             expect(moment(selectedDate).format("DD/MM/YYYY")).to.equal('29/03/2015');
             done();
