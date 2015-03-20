@@ -49,4 +49,19 @@ describe('Calendar', () => {
         var month = TestUtils.findRenderedDOMComponentWithClass(calendar, 'month');
         expect(month.getDOMNode().textContent).to.equal('May');
     });
+
+
+    it('should pass selected data to function', function(done) {
+        var callback = function(selectedDate) {
+            expect(moment(selectedDate).format("DD/MM/YYYY")).to.equal('29/03/2015');
+            done();
+        };
+
+        var calendar = TestUtils.renderIntoDocument(
+            <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={callback} />
+        );
+        var days = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'Day');
+        TestUtils.Simulate.click(days[0]);
+    });
+
 });
