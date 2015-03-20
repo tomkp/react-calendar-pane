@@ -65,14 +65,14 @@ describe('Calendar', () => {
     });
 
 
-    it('should set selected date to active', function() {
+    it('should set selected date to selected', function() {
         var calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
         var days = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'Day');
         TestUtils.Simulate.click(days[10]);
-        var active = TestUtils.findRenderedDOMComponentWithClass(calendar, 'active');
-        expect(active.getDOMNode().textContent).to.equal('8');
+        var selected = TestUtils.findRenderedDOMComponentWithClass(calendar, 'selected');
+        expect(selected.getDOMNode().textContent).to.equal('8');
     });
 
 
@@ -82,8 +82,8 @@ describe('Calendar', () => {
         );
         var days = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'Day');
         TestUtils.Simulate.click(days[10]);
-        var active = TestUtils.findRenderedDOMComponentWithClass(calendar, 'active');
-        expect(active.getDOMNode().textContent).to.equal('8');
+        var selected = TestUtils.findRenderedDOMComponentWithClass(calendar, 'selected');
+        expect(selected.getDOMNode().textContent).to.equal('8');
     });
 
 });

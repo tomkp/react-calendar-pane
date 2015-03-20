@@ -72,7 +72,7 @@ let Calendar = React.createClass({
             days.push(
                 <Day key={i++}
                     date={current.clone()}
-                    active={date}
+                    selected={date}
                     today={today}
                     isCurrentMonth={isCurrentMonth}
                     handleClick={this.handleClick} />

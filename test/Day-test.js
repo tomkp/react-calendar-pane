@@ -13,7 +13,7 @@ describe('Day', function() {
 
     var date = moment("03/04/2015", "DD/MM/YYYY");
     var day = TestUtils.renderIntoDocument(
-        <Day date={date} active={date} today={date} handleClick={handleClick} />
+        <Day date={date} selected={date} today={date} handleClick={handleClick} />
     );
 
 
@@ -23,7 +23,7 @@ describe('Day', function() {
     });
 
 
-    it('should display as "active"', function() {
+    it('should display as "selected"', function() {
         var component = TestUtils.findRenderedDOMComponentWithClass(day, 'Day');
         //expect(component.getDOMNode().className).to.contain('actual');
     });

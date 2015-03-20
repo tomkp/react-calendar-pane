@@ -6,7 +6,7 @@ let Day = React.createClass({
     propTypes: {
         handleClick: React.PropTypes.func.isRequired,
         date: React.PropTypes.object.isRequired,
-        active: React.PropTypes.object.isRequired,
+        selected: React.PropTypes.object.isRequired,
         today: React.PropTypes.object.isRequired
     },
 
@@ -16,8 +16,8 @@ let Day = React.createClass({
         if (this.props.today.isSame(this.props.date, 'day')) {
             classes.push('today');
         }
-        if (this.props.active.isSame(this.props.date, 'day')) {
-            classes.push('active');
+        if (this.props.selected.isSame(this.props.date, 'day')) {
+            classes.push('selected');
         }
         let style = {
             cursor: 'pointer'
