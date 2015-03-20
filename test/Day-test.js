@@ -13,7 +13,7 @@ describe('Day', function() {
 
     var date = moment("03/04/2015", "DD/MM/YYYY");
     var day = TestUtils.renderIntoDocument(
-        <Day date={date} actual={date} handleClick={handleClick} />
+        <Day date={date} active={date} today={date} handleClick={handleClick} />
     );
 
 

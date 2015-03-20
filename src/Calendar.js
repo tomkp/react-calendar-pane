@@ -50,6 +50,8 @@ let Calendar = React.createClass({
             cursor: 'pointer'
         };
 
+        let today = moment();
+
         let date = this.state.date;
         const startOfWeekIndex = 0;
         let current = date.clone().startOf('month').day(startOfWeekIndex);
@@ -69,9 +71,10 @@ let Calendar = React.createClass({
             let isCurrentMonth = current.isSame(date, 'month');
             days.push(
                 <Day key={i++}
-                    actual={date}
-                    isCurrentMonth={isCurrentMonth}
                     date={current.clone()}
+                    active={date}
+                    today={today}
+                    isCurrentMonth={isCurrentMonth}
                     handleClick={this.handleClick} />
             );
             current.add(1, 'days');
