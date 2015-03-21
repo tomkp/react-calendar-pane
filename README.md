@@ -26,7 +26,7 @@ build the demo
 
 
 ```html
-   <Calendar />
+   <Calendar date={moment("23/10/2015", "DD/MM/YYYY")} onSelect={this.onSelect} />
 ```
 
 <div align="center">
