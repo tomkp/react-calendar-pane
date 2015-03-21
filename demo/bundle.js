@@ -22799,7 +22799,7 @@ var Calendar = React.createClass({
 
     getInitialState: function getInitialState() {
         return {
-            date: this.props.date.startOf("day")
+            date: this.props.date
         };
     },
 
@@ -22830,7 +22830,7 @@ var Calendar = React.createClass({
             cursor: "pointer"
         };
 
-        var today = moment().startOf("day");
+        var today = moment();
 
         var date = this.state.date;
         var startOfWeekIndex = 0;
