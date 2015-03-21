@@ -42,8 +42,8 @@ build the demo
         margin: 4rem auto 0;
     }
 
-    th,
-    td {
+    .Calendar th,
+    .Calendar td {
         padding: 1rem;
         text-align: center;
     }
