@@ -12,7 +12,6 @@ let Day = React.createClass({
 
     render() {
         let classes = ['Day'];
-        //console.info('today', this.props.today.format('DD/MM/YYYY'));
         if (this.props.today.isSame(this.props.date, 'day')) {
             classes.push('today');
         }
