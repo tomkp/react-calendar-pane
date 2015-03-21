@@ -22799,7 +22799,7 @@ var Calendar = React.createClass({
 
     getInitialState: function getInitialState() {
         return {
-            date: this.props.date
+            date: this.props.date.startOf("day")
         };
     },
 
@@ -22830,7 +22830,7 @@ var Calendar = React.createClass({
             cursor: "pointer"
         };
 
-        var today = moment();
+        var today = moment().startOf("day");
 
         var date = this.state.date;
         var startOfWeekIndex = 0;
@@ -22941,7 +22941,6 @@ var Day = React.createClass({
 
     render: function render() {
         var classes = ["Day"];
-        //console.info('today', this.props.today.format('DD/MM/YYYY'));
         if (this.props.today.isSame(this.props.date, "day")) {
             classes.push("today");
         }
