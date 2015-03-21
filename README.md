@@ -33,15 +33,13 @@ build the demo
   <img src="docs/cap1.png" style="margin:1rem;" />
 </div>
 
-
 ### Example css
 
 ```css
     .Calendar {
         border-collapse: collapse;
         padding: 0;
-        margin: 4rem auto;
-        width: 400px;
+        margin: 4rem auto 0;
     }
 
     th,
