@@ -31,11 +31,10 @@
   },
   "scripts": {
     "build": "browserify src/Calendar.js -t -o dist/Calendar.js",
-    "demo": "browserify demo/Example.js -t -o demo/bundle.js",
     "test": "mochify -R spec",
     "test-watch": "mochify --watch",
     "cover": "node cover.js && cat lcov.info | coveralls && rm lcov.info",
-    "publish-demo": "surge demo hard-to-find-door.surge.sh"
+    "demo": "browserify demo/Example.js -t -o demo/bundle.js && surge demo hard-to-find-door.surge.sh"
   },
   "browserify": {
     "transform": [
