@@ -34,6 +34,41 @@ build the demo
 </div>
 
 
+### Example css
 
+```css
+    .Calendar {
+        border-collapse: collapse;
+        padding: 0;
+        margin: 4rem auto;
+        width: 400px;
+    }
+
+    th,
+    td {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .Day:hover {
+        background: #eee;
+        color: #000;
+    }
+
+    .Day.today {
+        background: #666;
+        color: #fff;
+    }
+
+    .Day.selected {
+        background: #2980b9;
+        color: #fff;
+    }
+
+    .Day.other-month {
+        background: #fafafa;
+        color: #aaa;
+    }
+```
 
 
