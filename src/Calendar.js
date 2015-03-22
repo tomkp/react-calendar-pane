@@ -8,18 +8,28 @@ import Week from './Week';
 let Calendar = React.createClass({
 
     propTypes: {
-        onSelect: React.PropTypes.func.isRequired
+        onSelect: React.PropTypes.func.isRequired,
+        date: React.PropTypes.object,
+        month: React.PropTypes.object
     },
 
     getDefaultProps() {
         return {
-            date: moment()
+            month: moment()
         }
     },
 
     getInitialState() {
+        let date = this.props.date;
+        let month;
+        if (date) {
+            month = this.props.date;
+        } else {
+            month = this.props.month;
+        }
         return {
-            date: this.props.date
+            date: date,
+            month: month
         }
     },
 
@@ -33,13 +43,13 @@ let Calendar = React.createClass({
 
     previous() {
         this.setState({
-            date: moment(this.state.date).subtract(1, 'month')
+            month: moment(this.state.month).subtract(1, 'month')
         });
     },
 
     next() {
         this.setState({
-            date: moment(this.state.date).add(1, 'month')
+            month: moment(this.state.month).add(1, 'month')
         });
     },
 
@@ -53,9 +63,13 @@ let Calendar = React.createClass({
         let today = moment();
 
         let date = this.state.date;
+        let month = this.state.month;
+
         const startOfWeekIndex = 0;
-        let current = date.clone().startOf('month').day(startOfWeekIndex);
-        let end = date.clone().endOf('month').day(7);
+
+        let current = month.clone().startOf('month').day(startOfWeekIndex);
+        let end = month.clone().endOf('month').day(7);
+
         let elements = [];
         let days = [];
         let week = 1;
@@ -68,11 +82,12 @@ let Calendar = React.createClass({
             day.add(1, 'days');
         }
         while (current.isBefore(end)) {
-            let isCurrentMonth = current.isSame(date, 'month');
+            let isCurrentMonth = current.isSame(month, 'month');
             days.push(
                 <Day key={i++}
                     date={current.clone()}
                     selected={date}
+                    month={month}
                     today={today}
                     isCurrentMonth={isCurrentMonth}
                     handleClick={this.handleClick} />
@@ -90,7 +105,7 @@ let Calendar = React.createClass({
                     <tr>
                         <th className="previous" onClick={this.previous} style={actionStyle}>«</th>
                         <th colSpan="5">
-                            <span className="month">{date.format('MMMM')}</span> <span className="year">{date.format('YYYY')}</span>
+                            <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
                         </th>
                         <th className="next" onClick={this.next} style={actionStyle}>»</th>
                     </tr>
