@@ -19,18 +19,19 @@
     "react": "^0.13.1"
   },
   "devDependencies": {
+    "babel": "^4.7.16",
     "babel-core": "^4.6.6",
     "babelify": "^5.0.4",
     "browserify": "^9.0.3",
-    "react-tools": "^0.13.0-rc1",
     "coveralls": "^2.11.2",
     "expect.js": "^0.3.1",
     "express": "^4.12.2",
     "mochify": "^2.6.0",
-    "mochify-istanbul": "^2.1.1"
+    "mochify-istanbul": "^2.1.1",
+    "react-tools": "^0.13.1"
   },
   "scripts": {
-    "build": "browserify src/Calendar.js -t -o dist/Calendar.js",
+    "build": "babel src --out-dir dist",
     "test": "mochify -R spec",
     "test-watch": "mochify --watch",
     "cover": "node cover.js && cat lcov.info | coveralls && rm lcov.info",
