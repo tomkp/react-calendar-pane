@@ -7462,7 +7462,7 @@ if ("production" !== process.env.NODE_ENV) {
   }
 }
 
-React.version = '0.13.1';
+React.version = '0.13.0-rc2';
 
 module.exports = React;
 
@@ -9160,7 +9160,7 @@ ReactComponent.prototype.setState = function(partialState, callback) {
  * You may want to call this when you know that some deeper aspect of the
  * component's state has changed but `setState` was not called.
  *
- * This will not invoke `shouldComponentUpdate`, but it will invoke
+ * This will not invoke `shouldUpdateComponent`, but it will invoke
  * `componentWillUpdate` and `componentDidUpdate`.
  *
  * @param {?function} callback Called after update is complete.
@@ -9183,7 +9183,6 @@ if ("production" !== process.env.NODE_ENV) {
   var deprecatedAPIs = {
     getDOMNode: 'getDOMNode',
     isMounted: 'isMounted',
-    replaceProps: 'replaceProps',
     replaceState: 'replaceState',
     setProps: 'setProps'
   };
@@ -9458,20 +9457,6 @@ var ReactCompositeComponentMixin = {
 
     // Initialize the public class
     var inst = new Component(publicProps, publicContext);
-
-    if ("production" !== process.env.NODE_ENV) {
-      // This will throw later in _renderValidatedComponent, but add an early
-      // warning now to help debugging
-      ("production" !== process.env.NODE_ENV ? warning(
-        inst.render != null,
-        '%s(...): No `render` method found on the returned component ' +
-        'instance: you may have forgotten to define `render` in your ' +
-        'component or you may have accidentally tried to render an element ' +
-        'whose type is a function that isn\'t a React component.',
-        Component.displayName || Component.name || 'Component'
-      ) : null);
-    }
-
     // These should be set up in the constructor, but as a convenience for
     // simpler class abstractions, we set them up after the fact.
     inst.props = publicProps;
@@ -10919,7 +10904,6 @@ ReactDOMComponent.Mixin = {
             styleUpdates[styleName] = '';
           }
         }
-        this._previousStyleCopy = null;
       } else if (registrationNameModules.hasOwnProperty(propKey)) {
         deleteListener(this._rootNodeID, propKey);
       } else if (
@@ -11699,9 +11683,7 @@ function updateOptions(component, propValue) {
         return;
       }
     }
-    if (options.length) {
-      options[0].selected = true;
-    }
+    options[0].selected = true;
   }
 }
 
@@ -12654,8 +12636,8 @@ var ReactDefaultPerf = {
           ReactDefaultPerf._allMeasurements.length - 1
         ].totalTime = performanceNow() - start;
         return rv;
-      } else if (fnName === '_mountImageIntoNode' ||
-          moduleName === 'ReactDOMIDOperations') {
+      } else if (moduleName === 'ReactDOMIDOperations' ||
+        moduleName === 'ReactComponentBrowserEnvironment') {
         start = performanceNow();
         rv = func.apply(this, args);
         totalTime = performanceNow() - start;
@@ -12701,10 +12683,6 @@ var ReactDefaultPerf = {
         (fnName === 'mountComponent' ||
         fnName === 'updateComponent' || fnName === '_renderValidatedComponent')))) {
 
-        if (typeof this._currentElement.type === 'string') {
-          return func.apply(this, args);
-        }
-
         var rootNodeID = fnName === 'mountComponent' ?
           args[0] :
           this._rootNodeID;
@@ -12737,10 +12715,17 @@ var ReactDefaultPerf = {
           addValue(entry.inclusive, rootNodeID, totalTime);
         }
 
+        var displayName = null;
+        if (this._instance.constructor.displayName) {
+          displayName = this._instance.constructor.displayName;
+        } else if (this._currentElement.type) {
+          displayName = this._currentElement.type;
+        }
+
         entry.displayNames[rootNodeID] = {
-          current: this.getName(),
+          current: displayName,
           owner: this._currentElement._owner ?
-            this._currentElement._owner.getName() :
+            this._currentElement._owner._instance.constructor.displayName :
             '<root>'
         };
 
@@ -16949,7 +16934,6 @@ function isNode(propValue) {
   switch (typeof propValue) {
     case 'number':
     case 'string':
-    case 'undefined':
       return true;
     case 'boolean':
       return !propValue;
@@ -16957,7 +16941,7 @@ function isNode(propValue) {
       if (Array.isArray(propValue)) {
         return propValue.every(isNode);
       }
-      if (propValue === null || ReactElement.isValidElement(propValue)) {
+      if (ReactElement.isValidElement(propValue)) {
         return true;
       }
       propValue = ReactFragment.extractIfFragment(propValue);
@@ -20313,7 +20297,6 @@ function createFullPageComponent(tag) {
   var elementFactory = ReactElement.createFactory(tag);
 
   var FullPageComponent = ReactClass.createClass({
-    tagName: tag.toUpperCase(),
     displayName: 'ReactFullPageComponent' + tag,
 
     componentWillUnmount: function() {
@@ -22906,7 +22889,7 @@ var Calendar = React.createClass({
                 null,
                 React.createElement(
                     "tr",
-                    null,
+                    { className: "month-header" },
                     React.createElement(
                         "th",
                         { className: "previous", onClick: this.previous, style: actionStyle },
@@ -22938,8 +22921,8 @@ var Calendar = React.createClass({
                 "thead",
                 null,
                 React.createElement(
-                    Week,
-                    { key: "daysOfWeek" },
+                    "tr",
+                    { className: "days-header" },
                     daysOfWeek
                 )
             ),
@@ -22967,8 +22950,9 @@ var Day = React.createClass({
     propTypes: {
         handleClick: React.PropTypes.func.isRequired,
         date: React.PropTypes.object.isRequired,
-        selected: React.PropTypes.object.isRequired,
-        today: React.PropTypes.object.isRequired
+        month: React.PropTypes.object.isRequired,
+        today: React.PropTypes.object.isRequired,
+        selected: React.PropTypes.object
     },
 
     render: function render() {
@@ -23032,7 +23016,7 @@ var Week = React.createClass({
     render: function render() {
         return React.createElement(
             "tr",
-            null,
+            { className: "Week" },
             this.props.children
         );
     }
