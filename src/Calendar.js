@@ -102,7 +102,7 @@ let Calendar = React.createClass({
         return (
             <table className={classes}>
                 <thead>
-                    <tr>
+                    <tr className="month-header">
                         <th className="previous" onClick={this.previous} style={actionStyle}>«</th>
                         <th colSpan="5">
                             <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
@@ -111,7 +111,7 @@ let Calendar = React.createClass({
                     </tr>
                 </thead>
                 <thead>
-                    <Week key="daysOfWeek">{daysOfWeek}</Week>
+                    <tr className="days-header">{daysOfWeek}</tr>
                 </thead>
                 <tbody>
                     {elements}

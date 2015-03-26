@@ -3,7 +3,7 @@ import React from 'react';
 
 let Week = React.createClass({
     render() {
-        return <tr>{this.props.children}</tr>
+        return <tr className='Week'>{this.props.children}</tr>
     }
 });
 
