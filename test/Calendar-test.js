@@ -11,12 +11,12 @@ describe('Calendar', () => {
         //console.info('onSelect', date);
     };
 
+
     it('displays the correct year', function() {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
-        const month = TestUtils.findRenderedDOMComponentWithClass(calendar, 'year');
-        expect(month.getDOMNode().textContent).to.equal('2015');
+        new Asserter(calendar).assertYear('2015');
     });
 
 
@@ -24,8 +24,7 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
-        const month = TestUtils.findRenderedDOMComponentWithClass(calendar, 'month');
-        expect(month.getDOMNode().textContent).to.equal('April');
+        new Asserter(calendar).assertMonth('April');
     });
 
 
@@ -33,10 +32,7 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
-        const previous = TestUtils.findRenderedDOMComponentWithClass(calendar, 'previous');
-        TestUtils.Simulate.click(previous);
-        const month = TestUtils.findRenderedDOMComponentWithClass(calendar, 'month');
-        expect(month.getDOMNode().textContent).to.equal('March');
+        new Asserter(calendar).previousMonth().assertMonth('March');
     });
 
 
@@ -44,10 +40,7 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
-        const next = TestUtils.findRenderedDOMComponentWithClass(calendar, 'next');
-        TestUtils.Simulate.click(next);
-        const month = TestUtils.findRenderedDOMComponentWithClass(calendar, 'month');
-        expect(month.getDOMNode().textContent).to.equal('May');
+        new Asserter(calendar).nextMonth().assertMonth('May');
     });
 
 
@@ -85,5 +78,47 @@ describe('Calendar', () => {
         const selected = TestUtils.findRenderedDOMComponentWithClass(calendar, 'selected');
         expect(selected.getDOMNode().textContent).to.equal('8');
     });
-
 });
+
+
+
+
+class Asserter {
+
+    constructor(calendar) {
+        this.component = TestUtils.findRenderedDOMComponentWithClass(calendar, 'Calendar');
+        this.calendar = calendar;
+    }
+    
+    assertYear(expectedYear) {
+        const year = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'year');
+        expect(year.getDOMNode().textContent).to.equal(expectedYear);
+        return this;
+    }
+    
+    assertMonth(expectedMonth) {
+        const month = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'month');
+        expect(month.getDOMNode().textContent).to.equal(expectedMonth);
+        return this;
+    }
+
+    previousMonth() {
+        const previous = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'previous');
+        TestUtils.Simulate.click(previous);
+        return this;
+    }
+
+    nextMonth() {
+        const next = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'next');
+        TestUtils.Simulate.click(next);
+        return this;
+    }
+
+    assertSelectedDay(expectedDay) {
+        const selected = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'selected');
+        expect(selected.getDOMNode().textContent).to.equal(expectedDay);
+    }
+
+
+
+}

@@ -33,7 +33,7 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "test": "mochify -R spec",
-    "test-watch": "mochify --watch",
+    "test-watch": "mochify -R spec --watch",
     "cover": "node cover.js && cat lcov.info | coveralls && rm lcov.info",
     "demo": "browserify demo/Example.js -t -o demo/bundle.js && surge demo hard-to-find-door.surge.sh"
   },
