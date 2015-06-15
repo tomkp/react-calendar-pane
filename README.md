@@ -1,7 +1,7 @@
 # react-calendar
 
 [![Build Status](https://travis-ci.org/tomkp/react-calendar-pane.png)](https://travis-ci.org/tomkp/react-calendar-pane)
-[![Coverage Status](https://coveralls.io/repos/tomkp/react-calendar-pane/badge.svg?branch=master)](https://coveralls.io/r/tomkp/react-calendar-pane?branch=master)
+[![Coverage Status](https://coveralls.io/repos/tomkp/react-calendar/badge.svg?branch=master)](https://coveralls.io/r/tomkp/react-calendar?branch=master)
 
 
 React calendar component in ES6
