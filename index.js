@@ -1,1 +1,3 @@
-module.exports = require('./src/Calendar.js');
+import Calendar from './src/Calendar.js';
+
+module.exports = Calendar;
