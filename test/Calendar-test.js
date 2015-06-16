@@ -53,8 +53,10 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={callback} />
         );
-        const days = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'Day');
-        TestUtils.Simulate.click(days[10]);
+
+        new Asserter(calendar)
+            .clickDay(10)
+        ;
     });
 
 
@@ -119,6 +121,9 @@ class Asserter {
         expect(selected.getDOMNode().textContent).to.equal(expectedDay);
     }
 
-
+    clickDay(dayIndex) {
+        const days = TestUtils.scryRenderedDOMComponentsWithClass(this.calendar, 'Day');
+        TestUtils.Simulate.click(days[dayIndex]);
+    }
 
 }

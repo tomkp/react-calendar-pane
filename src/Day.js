@@ -6,7 +6,7 @@ let Day = React.createClass({
     propTypes: {
         handleClick: React.PropTypes.func.isRequired,
         date: React.PropTypes.object.isRequired,
-        month: React.PropTypes.object.isRequired,
+        //month: React.PropTypes.object.isRequired,
         today: React.PropTypes.object.isRequired,
         selected: React.PropTypes.object
     },
