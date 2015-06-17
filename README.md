@@ -1,4 +1,4 @@
-# react-calendar
+# React Calendar Pane
 
 [![Build Status](https://travis-ci.org/tomkp/react-calendar-pane.png)](https://travis-ci.org/tomkp/react-calendar-pane)
 [![Coverage Status](https://coveralls.io/repos/tomkp/react-calendar/badge.svg?branch=master)](https://coveralls.io/r/tomkp/react-calendar?branch=master)
