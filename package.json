@@ -40,10 +40,7 @@
     "test:watch": "mochify -R spec --watch",
     "test:coverage": "node cover.js && cat lcov.info | coveralls && rm lcov.info",
     "demo": "browserify demo/Example.js -t -o demo/bundle.js",
-    "demo:publish": "browserify demo/Example.js -t -o demo/bundle.js && surge demo hard-to-find-door.surge.sh",
-    "git-commit": "git add -A demo && git commit -a -m 'gh-pages update'",
-    "git-push": "git push origin gh-pages --force && git checkout master",
-    "deploy": "npm run demo && npm run git-commit && npm run git-push"
+    "demo:publish": "browserify demo/Example.js -t -o demo/bundle.js && surge demo hard-to-find-door.surge.sh"
   },
   "browserify": {
     "transform": [
