@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from '../';
+import Calendar from '../lib/Calendar.js';
 
 
 var Example = React.createClass({
