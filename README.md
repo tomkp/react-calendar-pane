@@ -15,9 +15,6 @@ install
 run tests
 ```npm test```
 
-build dist
-```npm run build```
-
 build the demo
 ```npm run demo```
 
