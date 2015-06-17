@@ -1,7 +1,7 @@
 {
   "name": "react-calendar-pane",
   "description": "React calendar component",
-  "main": "index.js",
+  "main": "./lib/Calendar.js",
   "version": "0.0.6",
   "repository": {
     "type": "git",
@@ -22,24 +22,23 @@
     "react": "^0.13.1"
   },
   "devDependencies": {
-    "babel": "^4.7.16",
-    "babel-core": "^4.6.6",
+    "babel": "^5.5.8",
+    "babel-eslint": "^3.1.9",
     "babelify": "^5.0.4",
     "browserify": "^9.0.3",
     "coveralls": "^2.11.2",
-    "eslint": "^0.21.2",
-    "eslint-plugin-react": "^2.3.0",
     "expect.js": "^0.3.1",
     "express": "^4.12.2",
     "mochify": "^2.6.0",
     "mochify-istanbul": "^2.1.1",
-    "react-tools": "^0.13.1"
+    "react-tools": "^0.13.0-rc1"
   },
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile",
     "test": "mochify -R spec",
     "test:watch": "mochify -R spec --watch",
-    "test:cover": "node cover.js && cat lcov.info | coveralls && rm lcov.info",
+    "test:coverage": "node cover.js && cat lcov.info | coveralls && rm lcov.info",
     "demo": "browserify demo/Example.js -t -o demo/bundle.js",
     "demo:publish": "browserify demo/Example.js -t -o demo/bundle.js && surge demo hard-to-find-door.surge.sh"
   },
