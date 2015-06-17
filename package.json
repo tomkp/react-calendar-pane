@@ -7,6 +7,11 @@
     "type": "git",
     "url": "https://github.com/tomkp/react-calendar-pane"
   },
+  "bugs": {
+    "url": "https://github.com/tomkp/react-calendar-pane"
+  },
+  "homepage": "https://github.com/tomkp/react-calendar-pane",
+  "license": "MIT",
   "author": "tomkp <tom@tomkp.com>",
   "keywords": [
     "react",
