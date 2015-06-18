@@ -17,6 +17,8 @@
     "react",
     "react-component",
     "calendar",
+    "date-picker",
+    "react-date-picker",
     "calendar-pane",
     "react-calendar",
     "react-calendar-pane",
