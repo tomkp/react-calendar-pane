@@ -9,10 +9,12 @@ const expect = chai.expect;
 
 export default class Asserter {
 
+
     constructor(calendar) {
         this.component = TestUtils.findRenderedDOMComponentWithClass(calendar, 'Calendar');
         this.calendar = calendar;
     }
+
 
     assertYear(expectedYear) {
         const year = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'year');
@@ -20,11 +22,13 @@ export default class Asserter {
         return this;
     }
 
+
     assertMonth(expectedMonth) {
         const month = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'month');
         expect(month.getDOMNode().textContent).to.equal(expectedMonth);
         return this;
     }
+
 
     previousMonth() {
         const previous = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'previous');
@@ -32,19 +36,31 @@ export default class Asserter {
         return this;
     }
 
+
     nextMonth() {
         const next = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'next');
         TestUtils.Simulate.click(next);
         return this;
     }
 
+
     assertSelectedDay(expectedDay) {
         const selected = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'selected');
-        expect(selected.getDOMNode().textContent).to.equal(expectedDay);
+        const value = selected.getDOMNode().textContent;
+        expect(+value).to.equal(expectedDay);
+        return this;
     }
 
-    clickDay(dayIndex) {
+
+    clickDay(date) {
         const days = TestUtils.scryRenderedDOMComponentsWithClass(this.calendar, 'Day');
-        TestUtils.Simulate.click(days[dayIndex]);
+        const found = days.filter((day) => {
+            var value = day.getDOMNode().dataset.day;
+            return +value === date;
+        });
+        //console.info('found', found);
+
+        TestUtils.Simulate.click(found[0]);
+        return this;
     }
 }

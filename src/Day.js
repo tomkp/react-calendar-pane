@@ -29,6 +29,7 @@ let Day = React.createClass({
             <td className={classes.join(' ')}
                 style={style}
                 data-date={this.props.date.toISOString()}
+                data-day={this.props.date.format('D')}
                 onClick={this.props.handleClick}>
                 {this.props.date.format('D')}
             </td>

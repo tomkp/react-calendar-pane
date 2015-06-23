@@ -17,7 +17,7 @@ describe('Calendar', () => {
 
     it('displays the correct year', () => {
         const calendar = TestUtils.renderIntoDocument(
-            <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
+            <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
         new Asserter(calendar).assertYear('2015');
@@ -26,7 +26,7 @@ describe('Calendar', () => {
 
     it('displays the correct month', () => {
         const calendar = TestUtils.renderIntoDocument(
-            <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
+            <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
         new Asserter(calendar).assertMonth('April');
@@ -35,7 +35,7 @@ describe('Calendar', () => {
 
     it('should be able to go to previous month', () => {
         const calendar = TestUtils.renderIntoDocument(
-            <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
+            <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
         new Asserter(calendar).previousMonth().assertMonth('March');
@@ -44,7 +44,7 @@ describe('Calendar', () => {
 
     it('should be able to go to next month', () => {
         const calendar = TestUtils.renderIntoDocument(
-            <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
+            <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
         new Asserter(calendar).nextMonth().assertMonth('May');
@@ -53,41 +53,30 @@ describe('Calendar', () => {
 
     it('should trigger the callback with selected date when clicking a day', function(done) {
         const callback = function(selectedDate) {
-            expect(moment(selectedDate).format("DD/MM/YYYY")).to.equal('08/04/2015');
+            expect(moment(selectedDate).format('DD/MM/YYYY')).to.equal('08/04/2015');
             done();
         };
 
         const calendar = TestUtils.renderIntoDocument(
-            <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={callback} />
+            <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={callback} />
         );
 
-        new Asserter(calendar)
-            .clickDay(10)
-        ;
+        new Asserter(calendar).clickDay(8);
     });
 
 
     it('should set selected date to selected', () => {
+        const date = moment('03/04/2015', 'DD/MM/YYYY');
         const calendar = TestUtils.renderIntoDocument(
-            <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
+            <Calendar date={ date} onSelect={onSelect} />
         );
 
-        const days = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'Day');
-        TestUtils.Simulate.click(days[10]);
-        const selected = TestUtils.findRenderedDOMComponentWithClass(calendar, 'selected');
-        expect(selected.getDOMNode().textContent).to.equal('8');
+        new Asserter(calendar).clickDay(8).assertSelectedDay(8);
     });
 
 
     it('should add class to today', () => {
-        const calendar = TestUtils.renderIntoDocument(
-            <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
-        );
 
-        const days = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'Day');
-        TestUtils.Simulate.click(days[10]);
-        const selected = TestUtils.findRenderedDOMComponentWithClass(calendar, 'selected');
-        expect(selected.getDOMNode().textContent).to.equal('8');
     });
 });
 
