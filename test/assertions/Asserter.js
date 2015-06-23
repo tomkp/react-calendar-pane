@@ -52,14 +52,20 @@ export default class Asserter {
     }
 
 
+    assertToday() {
+        const today = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'today');
+        const value = today.getDOMNode().textContent;
+        expect(value).to.equal(moment().format('D'));
+        return this;
+    }
+
+
     clickDay(date) {
         const days = TestUtils.scryRenderedDOMComponentsWithClass(this.calendar, 'Day');
         const found = days.filter((day) => {
             var value = day.getDOMNode().dataset.day;
             return +value === date;
         });
-        //console.info('found', found);
-
         TestUtils.Simulate.click(found[0]);
         return this;
     }

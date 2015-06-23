@@ -75,7 +75,11 @@ describe('Calendar', () => {
 
 
     it('should add class to today', () => {
+        const calendar = TestUtils.renderIntoDocument(
+            <Calendar date={moment()} onSelect={onSelect} />
+        );
 
+        new Asserter(calendar).assertToday();
     });
 });
 
