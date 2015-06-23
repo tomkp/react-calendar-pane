@@ -19,6 +19,7 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
+
         new Asserter(calendar).assertYear('2015');
     });
 
@@ -27,6 +28,7 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
+
         new Asserter(calendar).assertMonth('April');
     });
 
@@ -35,6 +37,7 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
+
         new Asserter(calendar).previousMonth().assertMonth('March');
     });
 
@@ -43,6 +46,7 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
+
         new Asserter(calendar).nextMonth().assertMonth('May');
     });
 
@@ -67,6 +71,7 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
+
         const days = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'Day');
         TestUtils.Simulate.click(days[10]);
         const selected = TestUtils.findRenderedDOMComponentWithClass(calendar, 'selected');
@@ -78,6 +83,7 @@ describe('Calendar', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
+
         const days = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'Day');
         TestUtils.Simulate.click(days[10]);
         const selected = TestUtils.findRenderedDOMComponentWithClass(calendar, 'selected');
