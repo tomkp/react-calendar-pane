@@ -1,8 +1,10 @@
 import moment from 'moment';
-import expect from 'expect.js';
 import React from 'react/addons';
-let { TestUtils } = React.addons;
 import Calendar from '../src/Calendar';
+import chai from 'chai';
+
+const { TestUtils } = React.addons;
+const expect = chai.expect;
 
 
 describe('Calendar', () => {

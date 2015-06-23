@@ -1,8 +1,11 @@
 import moment from 'moment';
-import expect from 'expect.js';
 import React from 'react/addons';
-let { TestUtils } = React.addons;
+import chai from 'chai';
 import Day from '../src/Day';
+
+const { TestUtils } = React.addons;
+const expect = chai.expect;
+
 
 
 describe('Day', function() {
