@@ -66,9 +66,8 @@ describe('Calendar', () => {
 
 
     it('should set selected date to selected', () => {
-        const date = moment('03/04/2015', 'DD/MM/YYYY');
         const calendar = TestUtils.renderIntoDocument(
-            <Calendar date={ date} onSelect={onSelect} />
+            <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
         new Asserter(calendar).clickDay(8).assertSelectedDay(8);
