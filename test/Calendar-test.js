@@ -15,7 +15,7 @@ describe('Calendar', () => {
     };
 
 
-    it('displays the correct year', function() {
+    it('displays the correct year', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
@@ -24,7 +24,7 @@ describe('Calendar', () => {
     });
 
 
-    it('displays the correct month', function() {
+    it('displays the correct month', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
@@ -33,7 +33,7 @@ describe('Calendar', () => {
     });
 
 
-    it('should be able to go to previous month', function() {
+    it('should be able to go to previous month', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
@@ -42,7 +42,7 @@ describe('Calendar', () => {
     });
 
 
-    it('should be able to go to next month', function() {
+    it('should be able to go to next month', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
@@ -67,7 +67,7 @@ describe('Calendar', () => {
     });
 
 
-    it('should set selected date to selected', function() {
+    it('should set selected date to selected', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
@@ -79,7 +79,7 @@ describe('Calendar', () => {
     });
 
 
-    it('should add class to today', function() {
+    it('should add class to today', () => {
         const calendar = TestUtils.renderIntoDocument(
             <Calendar date={moment("03/04/2015", "DD/MM/YYYY")} onSelect={onSelect} />
         );
