@@ -1,7 +1,7 @@
 # React Calendar Pane
 
 [![build status](https://img.shields.io/travis/tomkp/react-calendar-pane/master.svg?style=flat-square)](https://travis-ci.org/tomkp/react-calendar-pane)
-[![Coverage Status](https://img.shields.io/coveralls/tomkp/react-calendar-pane/master.svg?style=flat-square)](https://coveralls.io/r/tomkp/react-calendar?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/tomkp/react-calendar-pane/master.svg?style=flat-square)](https://coveralls.io/r/tomkp/react-calendar-pane?branch=master)
 
 
 React calendar component in ES6
