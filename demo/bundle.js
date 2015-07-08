@@ -196,6 +196,7 @@ var Day = _react2["default"].createClass({
         return _react2["default"].createElement("td", { className: classes.join(" "),
             style: style,
             "data-date": this.props.date.toISOString(),
+            "data-day": this.props.date.format("D"),
             onClick: this.props.handleClick }, this.props.date.format("D"));
     }
 });
