@@ -1,70 +1,74 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var React = _interopRequire(require("react"));
+var _react = require('react');
 
-var Calendar = _interopRequire(require("../lib/Calendar.js"));
+var _react2 = _interopRequireDefault(_react);
 
-var Example = React.createClass({
-    displayName: "Example",
+var _libCalendarJs = require('../lib/Calendar.js');
+
+var _libCalendarJs2 = _interopRequireDefault(_libCalendarJs);
+
+var Example = _react2['default'].createClass({
+    displayName: 'Example',
 
     onSelect: function onSelect(date) {
-        console.info("onSelect", date);
+        console.info('onSelect', date);
     },
 
     render: function render() {
-        return React.createElement(Calendar, { onSelect: this.onSelect });
+        return _react2['default'].createElement(_libCalendarJs2['default'], { onSelect: this.onSelect });
     }
 
 });
 
-React.render(React.createElement(Example, null), document.body);
+_react2['default'].render(_react2['default'].createElement(Example, null), document.body);
 
 },{"../lib/Calendar.js":2,"react":162}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
 function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { "default": obj };
+    return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _moment = require("moment");
+var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var _Day = require("./Day");
+var _Day = require('./Day');
 
 var _Day2 = _interopRequireDefault(_Day);
 
-var _DayOfWeek = require("./DayOfWeek");
+var _DayOfWeek = require('./DayOfWeek');
 
 var _DayOfWeek2 = _interopRequireDefault(_DayOfWeek);
 
-var _Week = require("./Week");
+var _Week = require('./Week');
 
 var _Week2 = _interopRequireDefault(_Week);
 
-var Calendar = _react2["default"].createClass({
-    displayName: "Calendar",
+var Calendar = _react2['default'].createClass({
+    displayName: 'Calendar',
 
     propTypes: {
-        onSelect: _react2["default"].PropTypes.func.isRequired,
-        date: _react2["default"].PropTypes.object,
-        month: _react2["default"].PropTypes.object
+        onSelect: _react2['default'].PropTypes.func.isRequired,
+        date: _react2['default'].PropTypes.object,
+        month: _react2['default'].PropTypes.object
     },
 
     getDefaultProps: function getDefaultProps() {
         return {
-            month: (0, _moment2["default"])()
+            month: (0, _moment2['default'])()
         };
     },
 
@@ -83,41 +87,41 @@ var Calendar = _react2["default"].createClass({
     },
 
     handleClick: function handleClick(event) {
-        var date = event.target.getAttribute("data-date");
+        var date = event.target.getAttribute('data-date');
         this.props.onSelect(date);
         this.setState({
-            date: (0, _moment2["default"])(date)
+            date: (0, _moment2['default'])(date)
         });
     },
 
     previous: function previous() {
         this.setState({
-            month: (0, _moment2["default"])(this.state.month).subtract(1, "month")
+            month: (0, _moment2['default'])(this.state.month).subtract(1, 'month')
         });
     },
 
     next: function next() {
         this.setState({
-            month: (0, _moment2["default"])(this.state.month).add(1, "month")
+            month: (0, _moment2['default'])(this.state.month).add(1, 'month')
         });
     },
 
     render: function render() {
-        var classes = ["Calendar", this.props.className].join(" ");
+        var classes = ['Calendar', this.props.className].join(' ');
 
         var actionStyle = {
-            cursor: "pointer"
+            cursor: 'pointer'
         };
 
-        var today = (0, _moment2["default"])();
+        var today = (0, _moment2['default'])();
 
         var date = this.state.date;
         var month = this.state.month;
 
         var startOfWeekIndex = 0;
 
-        var current = month.clone().startOf("month").day(startOfWeekIndex);
-        var end = month.clone().endOf("month").day(7);
+        var current = month.clone().startOf('month').day(startOfWeekIndex);
+        var end = month.clone().endOf('month').day(7);
 
         var elements = [];
         var days = [];
@@ -126,135 +130,135 @@ var Calendar = _react2["default"].createClass({
         var daysOfWeek = [];
         var day = current.clone();
         for (var j = 0; j < 7; j++) {
-            var dayOfWeekKey = "dayOfWeek" + j;
-            daysOfWeek.push(_react2["default"].createElement(_DayOfWeek2["default"], { key: dayOfWeekKey, date: day.clone() }));
-            day.add(1, "days");
+            var dayOfWeekKey = 'dayOfWeek' + j;
+            daysOfWeek.push(_react2['default'].createElement(_DayOfWeek2['default'], { key: dayOfWeekKey, date: day.clone() }));
+            day.add(1, 'days');
         }
         while (current.isBefore(end)) {
-            var isCurrentMonth = current.isSame(month, "month");
-            days.push(_react2["default"].createElement(_Day2["default"], { key: i++,
+            var isCurrentMonth = current.isSame(month, 'month');
+            days.push(_react2['default'].createElement(_Day2['default'], { key: i++,
                 date: current.clone(),
                 selected: date,
                 month: month,
                 today: today,
                 isCurrentMonth: isCurrentMonth,
                 handleClick: this.handleClick }));
-            current.add(1, "days");
+            current.add(1, 'days');
             if (current.day() === 0) {
-                var weekKey = "week" + week++;
-                elements.push(_react2["default"].createElement(_Week2["default"], { key: weekKey }, days));
+                var weekKey = 'week' + week++;
+                elements.push(_react2['default'].createElement(_Week2['default'], { key: weekKey }, days));
                 days = [];
             }
         }
-        return _react2["default"].createElement("table", { className: classes }, _react2["default"].createElement("thead", null, _react2["default"].createElement("tr", { className: "month-header" }, _react2["default"].createElement("th", { className: "previous", onClick: this.previous, style: actionStyle }, "«"), _react2["default"].createElement("th", { colSpan: "5" }, _react2["default"].createElement("span", { className: "month" }, month.format("MMMM")), " ", _react2["default"].createElement("span", { className: "year" }, month.format("YYYY"))), _react2["default"].createElement("th", { className: "next", onClick: this.next, style: actionStyle }, "»"))), _react2["default"].createElement("thead", null, _react2["default"].createElement("tr", { className: "days-header" }, daysOfWeek)), _react2["default"].createElement("tbody", null, elements));
+        return _react2['default'].createElement('table', { className: classes }, _react2['default'].createElement('thead', null, _react2['default'].createElement('tr', { className: 'month-header' }, _react2['default'].createElement('th', { className: 'previous', onClick: this.previous, style: actionStyle }, '«'), _react2['default'].createElement('th', { colSpan: '5' }, _react2['default'].createElement('span', { className: 'month' }, month.format('MMMM')), ' ', _react2['default'].createElement('span', { className: 'year' }, month.format('YYYY'))), _react2['default'].createElement('th', { className: 'next', onClick: this.next, style: actionStyle }, '»'))), _react2['default'].createElement('thead', null, _react2['default'].createElement('tr', { className: 'days-header' }, daysOfWeek)), _react2['default'].createElement('tbody', null, elements));
     }
 });
 
-exports["default"] = Calendar;
-module.exports = exports["default"];
+exports['default'] = Calendar;
+module.exports = exports['default'];
 
 },{"./Day":3,"./DayOfWeek":4,"./Week":5,"moment":7,"react":162}],3:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
 function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { "default": obj };
+    return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var Day = _react2["default"].createClass({
-    displayName: "Day",
+var Day = _react2['default'].createClass({
+    displayName: 'Day',
 
     propTypes: {
-        handleClick: _react2["default"].PropTypes.func.isRequired,
-        date: _react2["default"].PropTypes.object.isRequired,
+        handleClick: _react2['default'].PropTypes.func.isRequired,
+        date: _react2['default'].PropTypes.object.isRequired,
         //month: React.PropTypes.object.isRequired,
-        today: _react2["default"].PropTypes.object.isRequired,
-        selected: _react2["default"].PropTypes.object
+        today: _react2['default'].PropTypes.object.isRequired,
+        selected: _react2['default'].PropTypes.object
     },
 
     render: function render() {
-        var classes = ["Day"];
-        if (this.props.today.isSame(this.props.date, "day")) {
-            classes.push("today");
+        var classes = ['Day'];
+        if (this.props.today.isSame(this.props.date, 'day')) {
+            classes.push('today');
         }
-        if (this.props.selected && this.props.selected.isSame(this.props.date, "day")) {
-            classes.push("selected");
+        if (this.props.selected && this.props.selected.isSame(this.props.date, 'day')) {
+            classes.push('selected');
         }
         var style = {
-            cursor: "pointer"
+            cursor: 'pointer'
         };
         if (!this.props.isCurrentMonth) {
-            classes.push("other-month");
+            classes.push('other-month');
         }
-        return _react2["default"].createElement("td", { className: classes.join(" "),
+        return _react2['default'].createElement('td', { className: classes.join(' '),
             style: style,
-            "data-date": this.props.date.toISOString(),
-            "data-day": this.props.date.format("D"),
-            onClick: this.props.handleClick }, this.props.date.format("D"));
+            'data-date': this.props.date.toISOString(),
+            'data-day': this.props.date.format('D'),
+            onClick: this.props.handleClick }, this.props.date.format('D'));
     }
 });
 
-exports["default"] = Day;
-module.exports = exports["default"];
+exports['default'] = Day;
+module.exports = exports['default'];
 
 },{"react":162}],4:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
 function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { "default": obj };
+    return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var DayOfWeek = _react2["default"].createClass({
-    displayName: "DayOfWeek",
+var DayOfWeek = _react2['default'].createClass({
+    displayName: 'DayOfWeek',
 
     render: function render() {
-        return _react2["default"].createElement("th", { className: "DayOfWeek" }, this.props.date.format("dd"));
+        return _react2['default'].createElement('th', { className: 'DayOfWeek' }, this.props.date.format('dd'));
     }
 });
 
-exports["default"] = DayOfWeek;
-module.exports = exports["default"];
+exports['default'] = DayOfWeek;
+module.exports = exports['default'];
 
 },{"react":162}],5:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
 function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { "default": obj };
+    return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var Week = _react2["default"].createClass({
-    displayName: "Week",
+var Week = _react2['default'].createClass({
+    displayName: 'Week',
 
     render: function render() {
-        return _react2["default"].createElement("tr", { className: "Week" }, this.props.children);
+        return _react2['default'].createElement('tr', { className: 'Week' }, this.props.children);
     }
 });
 
-exports["default"] = Week;
-module.exports = exports["default"];
+exports['default'] = Week;
+module.exports = exports['default'];
 
 },{"react":162}],6:[function(require,module,exports){
 // shim for using process in browser
@@ -262,32 +266,64 @@ module.exports = exports["default"];
 var process = module.exports = {};
 var queue = [];
 var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
 
 function drainQueue() {
     if (draining) {
         return;
     }
+    var timeout = setTimeout(cleanUpNextTick);
     draining = true;
-    var currentQueue;
+
     var len = queue.length;
     while(len) {
         currentQueue = queue;
         queue = [];
-        var i = -1;
-        while (++i < len) {
-            currentQueue[i]();
+        while (++queueIndex < len) {
+            currentQueue[queueIndex].run();
         }
+        queueIndex = -1;
         len = queue.length;
     }
+    currentQueue = null;
     draining = false;
+    clearTimeout(timeout);
 }
+
 process.nextTick = function (fun) {
-    queue.push(fun);
-    if (!draining) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
         setTimeout(drainQueue, 0);
     }
 };
 
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
 process.title = 'browser';
 process.browser = true;
 process.env = {};
