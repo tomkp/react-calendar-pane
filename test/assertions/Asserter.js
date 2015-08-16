@@ -10,9 +10,9 @@ const expect = chai.expect;
 export default class Asserter {
 
 
-    constructor(calendar) {
-        this.component = TestUtils.findRenderedDOMComponentWithClass(calendar, 'Calendar');
-        this.calendar = calendar;
+    constructor(jsx) {
+        this.calendar = TestUtils.renderIntoDocument(jsx);
+        this.component = TestUtils.findRenderedDOMComponentWithClass(this.calendar, 'Calendar');
     }
 
 
