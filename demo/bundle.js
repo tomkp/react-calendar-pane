@@ -23,7 +23,14 @@ var Example = _react2['default'].createClass({
     },
 
     render: function render() {
-        return _react2['default'].createElement(_libCalendarJs2['default'], { onSelect: this.onSelect });
+        var dayClasses = function dayClasses(date) {
+            var day = date.isoWeekday();
+            if (day == 6 || day == 7) {
+                return ['weekend'];
+            }
+            return [];
+        };
+        return _react2['default'].createElement(_libCalendarJs2['default'], { onSelect: this.onSelect, dayClasses: dayClasses });
     }
 
 });
@@ -67,12 +74,16 @@ exports['default'] = _react2['default'].createClass({
     propTypes: {
         onSelect: _react2['default'].PropTypes.func.isRequired,
         date: _react2['default'].PropTypes.object,
-        month: _react2['default'].PropTypes.object
+        month: _react2['default'].PropTypes.object,
+        dayClasses: _react2['default'].PropTypes.func
     },
 
     getDefaultProps: function getDefaultProps() {
         return {
-            month: (0, _moment2['default'])()
+            month: (0, _moment2['default'])(),
+            dayClasses: function dayClasses() {
+                return [];
+            }
         };
     },
 
@@ -138,13 +149,17 @@ exports['default'] = _react2['default'].createClass({
             day.add(1, 'days');
         }
         while (current.isBefore(end)) {
+            var dayClasses = this.props.dayClasses(current);
+            if (!current.isSame(month, 'month')) {
+                dayClasses = dayClasses.concat(['other-month']);
+            }
             var isCurrentMonth = current.isSame(month, 'month');
             days.push(_react2['default'].createElement(_Day2['default'], { key: i++,
                 date: current.clone(),
                 selected: date,
                 month: month,
                 today: today,
-                isCurrentMonth: isCurrentMonth,
+                classes: dayClasses,
                 handleClick: this.handleClick }));
             current.add(1, 'days');
             if (current.day() === 0) {
@@ -197,9 +212,7 @@ exports['default'] = _react2['default'].createClass({
         var style = {
             cursor: 'pointer'
         };
-        if (!this.props.isCurrentMonth) {
-            classes.push('other-month');
-        }
+        classes = classes.concat(this.props.classes);
         return _react2['default'].createElement('td', { className: classes.join(' '),
             style: style,
             'data-date': this.props.date.toISOString(),

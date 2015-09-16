@@ -22,9 +22,7 @@ export default React.createClass({
         let style = {
             cursor: 'pointer'
         };
-        if (!this.props.isCurrentMonth) {
-            classes.push('other-month');
-        }
+        classes = classes.concat(this.props.classes);
         return (
             <td className={classes.join(' ')}
                 style={style}

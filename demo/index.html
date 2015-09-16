@@ -46,9 +46,14 @@
             border-bottom: 1px solid #fff;
         }
 
-        .Day:hover {
-            background: #eee;
+        .Day.weekend {
+            background: #d2fafa; 
             color: #000;
+        }
+
+        .Day.other-month {
+            background: #fafafa;
+            color: #999;
         }
 
         .Day.today {
@@ -56,14 +61,14 @@
             color: #000;
         }
 
+        .Day:hover {
+            background: #eee;
+            color: #000;
+        }
+
         .Day.selected {
             background: #2980b9;
             color: #fff;
-        }
-
-        .Day.other-month {
-            background: #fafafa;
-            color: #999;
         }
 
     </style>
