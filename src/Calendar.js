@@ -10,12 +10,14 @@ let Calendar = React.createClass({
     propTypes: {
         onSelect: React.PropTypes.func.isRequired,
         date: React.PropTypes.object,
-        month: React.PropTypes.object
+        month: React.PropTypes.object,
+        dayClasses: React.PropTypes.func
     },
 
     getDefaultProps() {
         return {
-            month: moment()
+            month: moment(),
+            dayClasses: function() { return [] }
         }
     },
 
@@ -82,6 +84,10 @@ let Calendar = React.createClass({
             day.add(1, 'days');
         }
         while (current.isBefore(end)) {
+            let dayClasses = this.props.dayClasses(current);
+            if (!current.isSame(month, 'month')) {
+                dayClasses = dayClasses.concat(['other-month']);
+            }
             let isCurrentMonth = current.isSame(month, 'month');
             days.push(
                 <Day key={i++}
@@ -89,7 +95,7 @@ let Calendar = React.createClass({
                     selected={date}
                     month={month}
                     today={today}
-                    isCurrentMonth={isCurrentMonth}
+                    classes={dayClasses}
                     handleClick={this.handleClick} />
             );
             current.add(1, 'days');
