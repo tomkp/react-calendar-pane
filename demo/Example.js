@@ -9,8 +9,15 @@ var Example = React.createClass({
     },
 
     render: function() {
+        let dayClasses = function (date) {
+            let day = date.isoWeekday();
+            if (day == 6 || day == 7) {
+                return(['weekend'])
+            }
+            return([])
+        };
         return (
-            <Calendar onSelect={this.onSelect} />
+            <Calendar onSelect={this.onSelect} dayClasses={dayClasses}/>
         );
     }
 
