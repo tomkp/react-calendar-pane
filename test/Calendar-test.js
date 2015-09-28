@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React from 'react/addons';
 import Calendar from '../src/Calendar';
-import Asserter from './assertions/Asserter';
+import asserter from './assertions/Asserter';
 import chai from 'chai';
 
 const { TestUtils } = React.addons;
@@ -20,7 +20,7 @@ describe('Calendar', () => {
             <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
-        new Asserter(calendar).assertYear('2015');
+        asserter(calendar).assertYear('2015');
     });
 
 
@@ -29,7 +29,7 @@ describe('Calendar', () => {
             <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
-        new Asserter(calendar).assertMonth('April');
+        asserter(calendar).assertMonth('April');
     });
 
 
@@ -38,7 +38,7 @@ describe('Calendar', () => {
             <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
-        new Asserter(calendar).previousMonth().assertMonth('March');
+        asserter(calendar).previousMonth().assertMonth('March');
     });
 
 
@@ -47,7 +47,7 @@ describe('Calendar', () => {
             <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
-        new Asserter(calendar).nextMonth().assertMonth('May');
+        asserter(calendar).nextMonth().assertMonth('May');
     });
 
 
@@ -61,7 +61,7 @@ describe('Calendar', () => {
             <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={callback} />
         );
 
-        new Asserter(calendar).clickDay(8);
+        asserter(calendar).clickDay(8);
     });
 
 
@@ -70,7 +70,7 @@ describe('Calendar', () => {
             <Calendar date={moment('03/04/2015', 'DD/MM/YYYY')} onSelect={onSelect} />
         );
 
-        new Asserter(calendar).clickDay(8).assertSelectedDay(8);
+        asserter(calendar).clickDay(8).assertSelectedDay(8);
     });
 
 
@@ -79,7 +79,7 @@ describe('Calendar', () => {
             <Calendar date={moment()} onSelect={onSelect} />
         );
 
-        new Asserter(calendar).assertToday();
+        asserter(calendar).assertToday();
     });
 });
 
