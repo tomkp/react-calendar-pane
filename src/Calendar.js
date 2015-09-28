@@ -5,7 +5,7 @@ import DayOfWeek from './DayOfWeek';
 import Week from './Week';
 
 
-let Calendar = React.createClass({
+export default React.createClass({
 
     propTypes: {
         onSelect: React.PropTypes.func.isRequired,
@@ -122,4 +122,3 @@ let Calendar = React.createClass({
 });
 
 
-export default Calendar;

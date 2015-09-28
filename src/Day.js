@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-let Day = React.createClass({
+export default React.createClass({
 
     propTypes: {
         handleClick: React.PropTypes.func.isRequired,
@@ -37,5 +37,3 @@ let Day = React.createClass({
     }
 });
 
-
-export default Day;

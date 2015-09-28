@@ -1,11 +1,10 @@
 import React from 'react';
 
 
-let Week = React.createClass({
+export default React.createClass({
     render() {
         return <tr className='Week'>{this.props.children}</tr>
     }
 });
 
 
-export default Week;
