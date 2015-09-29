@@ -86,8 +86,7 @@ exports['default'] = _react2['default'].createClass({
         };
     },
 
-    handleClick: function handleClick(event) {
-        var date = event.target.getAttribute('data-date');
+    handleClick: function handleClick(date) {
         this.props.onSelect(date);
         this.setState({
             date: (0, _moment2['default'])(date)
@@ -182,6 +181,8 @@ exports['default'] = _react2['default'].createClass({
     },
 
     render: function render() {
+        var _this = this;
+
         var classes = ['Day'];
         if (this.props.today.isSame(this.props.date, 'day')) {
             classes.push('today');
@@ -199,7 +200,9 @@ exports['default'] = _react2['default'].createClass({
             style: style,
             'data-date': this.props.date.toISOString(),
             'data-day': this.props.date.format('D'),
-            onClick: this.props.handleClick }, this.props.date.format('D'));
+            onClick: function onClick() {
+                return _this.props.handleClick(_this.props.date);
+            } }, this.props.date.format('D'));
     }
 });
 module.exports = exports['default'];

@@ -30,7 +30,7 @@ export default React.createClass({
                 style={style}
                 data-date={this.props.date.toISOString()}
                 data-day={this.props.date.format('D')}
-                onClick={this.props.handleClick}>
+                onClick={() => this.props.handleClick(this.props.date) }>
                 {this.props.date.format('D')}
             </td>
         );

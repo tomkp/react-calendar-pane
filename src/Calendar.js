@@ -33,8 +33,7 @@ export default React.createClass({
         }
     },
 
-    handleClick(event) {
-        var date = event.target.getAttribute('data-date');
+    handleClick(date) {
         this.props.onSelect(date);
         this.setState({
             date: moment(date)
