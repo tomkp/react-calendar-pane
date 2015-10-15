@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Calendar from '../lib/Calendar.js';
 
 
@@ -16,4 +17,4 @@ var Example = React.createClass({
 
 });
 
-React.render(<Example />, document.body);
+ReactDOM.render(<Example />, document.getElementById("container"));

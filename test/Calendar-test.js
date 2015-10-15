@@ -1,10 +1,11 @@
 import moment from 'moment';
-import React from 'react/addons';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactTestUtils from 'react-addons-test-utils';
 import Calendar from '../src/Calendar';
 import asserter from './assertions/Asserter';
 import chai from 'chai';
 
-const { TestUtils } = React.addons;
 const expect = chai.expect;
 
 

@@ -26,7 +26,8 @@
   ],
   "dependencies": {
     "moment": "^2.10.6",
-    "react": "^0.13.3"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   },
   "devDependencies": {
     "babel": "^5.8.23",
@@ -36,7 +37,7 @@
     "coveralls": "^2.11.4",
     "mochify": "^2.13.0",
     "mochify-istanbul": "^2.3.0",
-    "react-tools": "^0.13.3",
+    "react-addons-test-utils": "^0.14.0",
     "watchify": "^3.4.0"
   },
   "scripts": {
