@@ -36,10 +36,11 @@ export default React.createClass({
     },
 
     handleClick(date) {
-        this.props.onSelect(date);
-        this.setState({
-            date: moment(date)
-        });
+        if (this.props.onSelect(date) !== false) {
+            this.setState({
+                date: moment(date)
+            });
+        }
     },
 
     previous() {
