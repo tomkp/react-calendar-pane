@@ -28,10 +28,13 @@ var Example = _react2['default'].createClass({
 
     onSelect: function onSelect(date, previousDate) {
         if ((0, _moment2['default'])(date).isSame(previousDate)) {
+            console.info('onSelect: false', date);
             return false;
         } else if ((0, _moment2['default'])().isSame(date, 'month')) {
+            console.info('onSelect: true', date);
             return true;
-            console.info('onSelect', date);
+        } else {
+            console.info('onSelect: none', date);
         }
     },
 

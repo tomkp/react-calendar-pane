@@ -9,11 +9,15 @@ var Example = React.createClass({
 
     onSelect: function (date, previousDate) {
         if (moment(date).isSame(previousDate)) {
+            console.info('onSelect: false', date);
             return false;
         }
         else if (moment().isSame(date, 'month')) {
+            console.info('onSelect: true', date);
             return true;
-            console.info('onSelect', date);
+        }
+        else {
+          console.info('onSelect: none', date);
         }
     },
 
