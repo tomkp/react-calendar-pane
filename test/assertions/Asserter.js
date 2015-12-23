@@ -33,14 +33,14 @@ export default (jsx) => {
 
         previousMonth() {
             const previous = ReactTestUtils.findRenderedDOMComponentWithClass(calendar, 'previous');
-            ReactTestUtils.Simulate.click(previous);
+            ReactTestUtils.Simulate.click(previous.firstChild);
             return this;
         },
 
 
         nextMonth() {
             const next = ReactTestUtils.findRenderedDOMComponentWithClass(calendar, 'next');
-            ReactTestUtils.Simulate.click(next);
+            ReactTestUtils.Simulate.click(next.firstChild);
             return this;
         },
 
@@ -67,7 +67,7 @@ export default (jsx) => {
                 var value = ReactDOM.findDOMNode(day).dataset.day;
                 return +value === date;
             });
-            ReactTestUtils.Simulate.click(found[0]);
+            ReactTestUtils.Simulate.click(found[0].firstChild);
             return this;
         }
     }
