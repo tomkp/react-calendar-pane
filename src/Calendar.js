@@ -86,10 +86,6 @@ export default React.createClass({
 
         let classes = ['Calendar', this.props.className].join(' ');
 
-        let actionStyle = {
-            cursor: 'pointer'
-        };
-
         let today = moment();
 
         let date = this.state.date;
@@ -144,11 +140,11 @@ export default React.createClass({
         if (this.props.useNav) {
           nav = (
               <tr className="month-header">
-                  <th className="previous" onClick={this.previous} style={actionStyle}>«</th>
+                  <th className="nav previous" onClick={this.previous}>«</th>
                   <th colSpan="5">
                       <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
                   </th>
-                  <th className="next" onClick={this.next} style={actionStyle}>»</th>
+                  <th className="nav next" onClick={this.next}>»</th>
               </tr>
           )
         }

@@ -185,10 +185,6 @@ exports['default'] = _react2['default'].createClass({
 
         var classes = ['Calendar', this.props.className].join(' ');
 
-        var actionStyle = {
-            cursor: 'pointer'
-        };
-
         var today = (0, _moment2['default'])();
 
         var date = this.state.date;
@@ -239,7 +235,7 @@ exports['default'] = _react2['default'].createClass({
         var nav = undefined;
 
         if (this.props.useNav) {
-            nav = _react2['default'].createElement('tr', { className: 'month-header' }, _react2['default'].createElement('th', { className: 'previous', onClick: this.previous, style: actionStyle }, '«'), _react2['default'].createElement('th', { colSpan: '5' }, _react2['default'].createElement('span', { className: 'month' }, month.format('MMMM')), ' ', _react2['default'].createElement('span', { className: 'year' }, month.format('YYYY'))), _react2['default'].createElement('th', { className: 'next', onClick: this.next, style: actionStyle }, '»'));
+            nav = _react2['default'].createElement('tr', { className: 'month-header' }, _react2['default'].createElement('th', { className: 'nav previous', onClick: this.previous }, '«'), _react2['default'].createElement('th', { colSpan: '5' }, _react2['default'].createElement('span', { className: 'month' }, month.format('MMMM')), ' ', _react2['default'].createElement('span', { className: 'year' }, month.format('YYYY'))), _react2['default'].createElement('th', { className: 'nav next', onClick: this.next }, '»'));
         } else {
             nav = _react2['default'].createElement('tr', { className: 'month-header' }, _react2['default'].createElement('th', { colSpan: '7' }, _react2['default'].createElement('span', { className: 'month' }, month.format('MMMM')), ' ', _react2['default'].createElement('span', { className: 'year' }, month.format('YYYY'))));
         }
@@ -285,12 +281,8 @@ exports['default'] = _react2['default'].createClass({
         if (this.props.selected && this.props.selected.isSame(this.props.date, 'day')) {
             classes.push('selected');
         }
-        var style = {
-            cursor: 'pointer'
-        };
         classes = classes.concat(this.props.classes);
         return _react2['default'].createElement('td', { className: classes.join(' '),
-            style: style,
             'data-date': this.props.date.toISOString(),
             'data-day': this.props.date.format('D'),
             onClick: function onClick() {
