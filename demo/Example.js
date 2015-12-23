@@ -23,7 +23,12 @@ var Example = React.createClass({
             return([])
         };
         return (
-            <Calendar onSelect={this.onSelect} dayClasses={dayClasses}/>
+            <div>
+                <p>Calendar with weekend</p>
+                <Calendar onSelect={this.onSelect} dayClasses={dayClasses}/>
+                <p>Calendar without nav</p>
+                <Calendar onSelect={this.onSelect} dayClasses={dayClasses} useNav={false}/>
+            </div>
         );
     }
 

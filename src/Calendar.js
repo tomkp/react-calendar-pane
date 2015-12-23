@@ -11,13 +11,15 @@ export default React.createClass({
         onSelect: React.PropTypes.func.isRequired,
         date: React.PropTypes.object,
         month: React.PropTypes.object,
-        dayClasses: React.PropTypes.func
+        dayClasses: React.PropTypes.func,
+        useNav: React.PropTypes.bool,
     },
 
     getDefaultProps() {
         return {
             month: moment(),
-            dayClasses: function() { return [] }
+            dayClasses: function() { return [] },
+            useNav: true,
         }
     },
 
@@ -105,16 +107,34 @@ export default React.createClass({
                 days = [];
             }
         }
+
+        let nav
+
+        if (this.props.useNav) {
+          nav = (
+              <tr className="month-header">
+                  <th className="previous" onClick={this.previous} style={actionStyle}>«</th>
+                  <th colSpan="5">
+                      <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
+                  </th>
+                  <th className="next" onClick={this.next} style={actionStyle}>»</th>
+              </tr>
+          )
+        }
+        else {
+          nav = (
+              <tr className="month-header">
+                  <th colSpan="7">
+                      <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
+                  </th>
+              </tr>
+          )
+        }
+
         return (
             <table className={classes}>
                 <thead>
-                    <tr className="month-header">
-                        <th className="previous" onClick={this.previous} style={actionStyle}>«</th>
-                        <th colSpan="5">
-                            <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
-                        </th>
-                        <th className="next" onClick={this.next} style={actionStyle}>»</th>
-                    </tr>
+                    {nav}
                 </thead>
                 <thead>
                     <tr className="days-header">{daysOfWeek}</tr>
@@ -126,5 +146,3 @@ export default React.createClass({
         );
     }
 });
-
-
