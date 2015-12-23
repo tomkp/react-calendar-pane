@@ -33,12 +33,8 @@
         .Calendar {
             border-collapse: collapse;
             padding: 0;
-            margin: 4rem auto 0;
+            margin: 1rem auto 0;
             background: #fff;
-        }
-
-        p + .Calendar {
-          margin-top: 1rem;
         }
 
         .Calendar th,
@@ -55,32 +51,37 @@
             border-bottom: 1px solid #fff;
         }
 
-        .Calendar .nav,
+        .Calendar .nav button {
+          cursor: pointer;
+          border: 0;
+          background: none transparent;
+        }
+
         .Calendar .Day {
             cursor: pointer;
         }
 
-        .Day.weekend {
+        .Calendar .Day.weekend {
             background: #bdc3c7;
             color: #000;
         }
 
-        .Day.other-month {
+        .Calendar .Day.other-month {
             color: #999;
             font-style: italic;
         }
 
-        .Day.today {
+        .Calendar .Day.today {
             background: #fafad2;
             color: #000;
         }
 
-        .Day:hover {
+        .Calendar .Day:hover {
             background: #eee;
             color: #000;
         }
 
-        .Day.selected {
+        .Calendar .Day.selected {
             background: #2980b9;
             color: #fff;
         }

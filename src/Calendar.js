@@ -140,11 +140,15 @@ export default React.createClass({
         if (this.props.useNav) {
           nav = (
               <tr className="month-header">
-                  <th className="nav previous" onClick={this.previous}>«</th>
+                  <th className="nav previous">
+                      <button onClick={this.previous}>«</button>
+                  </th>
                   <th colSpan="5">
                       <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
                   </th>
-                  <th className="nav next" onClick={this.next}>»</th>
+                  <th className="nav next">
+                      <button onClick={this.next}>»</button>
+                  </th>
               </tr>
           )
         }
