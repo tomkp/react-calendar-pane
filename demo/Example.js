@@ -30,7 +30,7 @@ var Example = React.createClass({
                 <p>Calendar without nav</p>
                 <Calendar onSelect={this.onSelect} dayClasses={dayClasses} useNav={false}/>
                 <p>French calendar</p>
-                <Calendar onSelect={this.onSelect} dayClasses={dayClasses} locale={'fr'}/>
+                <Calendar onSelect={this.onSelect} dayClasses={dayClasses} locale="fr" startOfWeekIndex={1}/>
             </div>
         );
     }

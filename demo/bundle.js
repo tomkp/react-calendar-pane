@@ -62,7 +62,7 @@ var Example = _react2['default'].createClass({
                 null,
                 'French calendar'
             ),
-            _react2['default'].createElement(_libCalendarJs2['default'], { onSelect: this.onSelect, dayClasses: dayClasses, locale: 'fr' })
+            _react2['default'].createElement(_libCalendarJs2['default'], { onSelect: this.onSelect, dayClasses: dayClasses, locale: 'fr', startOfWeekIndex: 1 })
         );
     }
 
@@ -110,7 +110,8 @@ exports['default'] = _react2['default'].createClass({
         month: _react2['default'].PropTypes.object,
         dayClasses: _react2['default'].PropTypes.func,
         useNav: _react2['default'].PropTypes.bool,
-        locale: _react2['default'].PropTypes.string
+        locale: _react2['default'].PropTypes.string,
+        startOfWeekIndex: _react2['default'].PropTypes.number
     },
 
     getDefaultProps: function getDefaultProps() {
@@ -120,7 +121,8 @@ exports['default'] = _react2['default'].createClass({
                 return [];
             },
             useNav: true,
-            locale: 'en'
+            locale: 'en',
+            startOfWeekIndex: 0
         };
     },
 
@@ -179,6 +181,8 @@ exports['default'] = _react2['default'].createClass({
     },
 
     render: function render() {
+        var startOfWeekIndex = this.props.startOfWeekIndex;
+
         var classes = ['Calendar', this.props.className].join(' ');
 
         var actionStyle = {
@@ -190,10 +194,15 @@ exports['default'] = _react2['default'].createClass({
         var date = this.state.date;
         var month = this.state.month;
 
-        var startOfWeekIndex = 0;
-
         var current = month.clone().startOf('month').day(startOfWeekIndex);
-        var end = month.clone().endOf('month').day(7);
+        if (current.date() > 1 && current.date() < 7) {
+            current.subtract(7, 'd');
+        }
+
+        var end = month.clone().endOf('month').day(7 + startOfWeekIndex);
+        if (end.date() > 7) {
+            end.subtract(7, 'd');
+        }
 
         var elements = [];
         var days = [];
@@ -220,7 +229,7 @@ exports['default'] = _react2['default'].createClass({
                 classes: dayClasses,
                 handleClick: this.handleClick }));
             current.add(1, 'days');
-            if (current.day() === 0) {
+            if (current.day() === startOfWeekIndex) {
                 var weekKey = 'week' + week++;
                 elements.push(_react2['default'].createElement(_Week2['default'], { key: weekKey }, days));
                 days = [];

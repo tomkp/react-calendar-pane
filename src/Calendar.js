@@ -13,7 +13,8 @@ export default React.createClass({
         month: React.PropTypes.object,
         dayClasses: React.PropTypes.func,
         useNav: React.PropTypes.bool,
-        locale: React.PropTypes.string
+        locale: React.PropTypes.string,
+        startOfWeekIndex: React.PropTypes.number
     },
 
     getDefaultProps() {
@@ -22,6 +23,7 @@ export default React.createClass({
             dayClasses: function() { return [] },
             useNav: true,
             locale: 'en',
+            startOfWeekIndex: 0
         }
     },
 
@@ -80,6 +82,8 @@ export default React.createClass({
     },
 
     render() {
+        const { startOfWeekIndex } = this.props;
+
         let classes = ['Calendar', this.props.className].join(' ');
 
         let actionStyle = {
@@ -91,10 +95,15 @@ export default React.createClass({
         let date = this.state.date;
         let month = this.state.month;
 
-        const startOfWeekIndex = 0;
-
         let current = month.clone().startOf('month').day(startOfWeekIndex);
-        let end = month.clone().endOf('month').day(7);
+        if (current.date() > 1 && current.date() < 7) {
+            current.subtract(7, 'd');
+        }
+
+        let end = month.clone().endOf('month').day(7 + startOfWeekIndex);
+        if (end.date() > 7) {
+            end.subtract(7, 'd');
+        }
 
         let elements = [];
         let days = [];
@@ -123,7 +132,7 @@ export default React.createClass({
                     handleClick={this.handleClick} />
             );
             current.add(1, 'days');
-            if (current.day() === 0) {
+            if (current.day() === startOfWeekIndex) {
                 let weekKey = 'week' + week++;
                 elements.push(<Week key={weekKey}>{days}</Week>);
                 days = [];
