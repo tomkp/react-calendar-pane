@@ -13,6 +13,7 @@ export default React.createClass({
         month: React.PropTypes.object,
         dayClasses: React.PropTypes.func,
         useNav: React.PropTypes.bool,
+        locale: React.PropTypes.string
     },
 
     getDefaultProps() {
@@ -20,6 +21,7 @@ export default React.createClass({
             month: moment(),
             dayClasses: function() { return [] },
             useNav: true,
+            locale: 'en',
         }
     },
 
@@ -35,6 +37,26 @@ export default React.createClass({
             date: date,
             month: month
         }
+    },
+
+    componentWillMount() {
+        moment.locale(this.props.locale);
+
+        if (!!this.state.date) {
+          this.state.date.locale(this.props.locale)
+        }
+
+        this.state.month.locale(this.props.locale)
+    },
+
+    componentWillUpdate(nextProps, nextState) {
+        moment.locale(this.props.locale);
+
+        if (!!nextState.date) {
+          nextState.date.locale(this.props.locale)
+        }
+
+        nextState.month.locale(this.props.locale)
     },
 
     handleClick(date) {

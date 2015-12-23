@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Calendar from '../lib/Calendar.js';
 import moment from 'moment';
+import momentFr from 'moment/locale/fr';
 
 
 var Example = React.createClass({
@@ -28,6 +29,8 @@ var Example = React.createClass({
                 <Calendar onSelect={this.onSelect} dayClasses={dayClasses}/>
                 <p>Calendar without nav</p>
                 <Calendar onSelect={this.onSelect} dayClasses={dayClasses} useNav={false}/>
+                <p>French calendar</p>
+                <Calendar onSelect={this.onSelect} dayClasses={dayClasses} locale={'fr'}/>
             </div>
         );
     }
