@@ -23,9 +23,11 @@ export default React.createClass({
         return (
             <td className={classes.join(' ')}
                 data-date={this.props.date.toISOString()}
-                data-day={this.props.date.format('D')}
-                onClick={() => this.props.handleClick(this.props.date) }>
-                {this.props.date.format('D')}
+                data-day={this.props.date.format('D')}>
+                <button className="Day-inner"
+                    onClick={() => this.props.handleClick(this.props.date)}>
+                    {this.props.date.format('D')}
+                </button>
             </td>
         );
     }
