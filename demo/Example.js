@@ -7,11 +7,13 @@ import momentFr from 'moment/locale/fr';
 
 var Example = React.createClass({
 
-    onSelect: function (date) {
-        if (moment().isSame(date, 'month')) {
-            console.info('onSelect', date);
-        } else {
+    onSelect: function (date, previousDate) {
+        if (moment(date).isSame(previousDate)) {
             return false;
+        }
+        else if (moment().isSame(date, 'month')) {
+            return true;
+            console.info('onSelect', date);
         }
     },
 

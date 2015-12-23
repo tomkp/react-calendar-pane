@@ -26,11 +26,12 @@ var _momentLocaleFr2 = _interopRequireDefault(_momentLocaleFr);
 var Example = _react2['default'].createClass({
     displayName: 'Example',
 
-    onSelect: function onSelect(date) {
-        if ((0, _moment2['default'])().isSame(date, 'month')) {
-            console.info('onSelect', date);
-        } else {
+    onSelect: function onSelect(date, previousDate) {
+        if ((0, _moment2['default'])(date).isSame(previousDate)) {
             return false;
+        } else if ((0, _moment2['default'])().isSame(date, 'month')) {
+            return true;
+            console.info('onSelect', date);
         }
     },
 
@@ -161,9 +162,15 @@ exports['default'] = _react2['default'].createClass({
     },
 
     handleClick: function handleClick(date) {
-        if (this.props.onSelect(date) !== false) {
+        var flag = this.props.onSelect(date, this.state.date);
+
+        if (flag === true) {
             this.setState({
                 date: (0, _moment2['default'])(date)
+            });
+        } else if (flag === false) {
+            this.setState({
+                date: null
             });
         }
     },

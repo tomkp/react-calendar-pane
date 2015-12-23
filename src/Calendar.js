@@ -62,10 +62,17 @@ export default React.createClass({
     },
 
     handleClick(date) {
-        if (this.props.onSelect(date) !== false) {
+        let flag = this.props.onSelect(date, this.state.date);
+
+        if (flag === true) {
             this.setState({
                 date: moment(date)
             });
+        }
+        else if (flag === false) {
+          this.setState({
+            date: null
+          })
         }
     },
 
