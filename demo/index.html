@@ -25,48 +25,80 @@
             background: #eee;
         }
 
+        p {
+          margin-top: 2rem;
+          text-align: center;
+        }
+
+        #container {
+          margin-bottom: 3rem;
+        }
+
         .Calendar {
             border-collapse: collapse;
             padding: 0;
-            margin: 4rem auto 0;
+            margin: 1rem auto 0;
             background: #fff;
         }
 
         .Calendar th,
         .Calendar td {
-            padding: 1rem;
+            padding: .25rem;
             text-align: center;
         }
 
         .Calendar th {
             background: #ddd;
+            padding: .5rem 1rem;
         }
 
         .Calendar .month-header {
             border-bottom: 1px solid #fff;
         }
 
-        .Day.weekend {
+        .Calendar .nav .nav-inner {
+          cursor: pointer;
+          border: 0;
+          background: none transparent;
+        }
+
+        .Calendar .Day {
+            cursor: pointer;
+        }
+
+        .Calendar .Day .Day-inner {
+            background: none transparent;
+            border: 0;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-block;
+            padding: 0;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            width: 2.5rem;
+        }
+
+        .Calendar .Day.weekend {
             background: #bdc3c7;
             color: #000;
         }
 
-        .Day.other-month {
+        .Calendar .Day.other-month {
             color: #999;
             font-style: italic;
         }
 
-        .Day.today {
+        .Calendar .Day.today .Day-inner {
             background: #fafad2;
             color: #000;
         }
 
-        .Day:hover {
+        .Calendar .Day:hover .Day-inner {
             background: #eee;
             color: #000;
         }
 
-        .Day.selected {
+        .Calendar .Day.selected .Day-inner {
             background: #2980b9;
             color: #fff;
         }

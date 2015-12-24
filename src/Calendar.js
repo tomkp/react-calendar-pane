@@ -11,13 +11,19 @@ export default React.createClass({
         onSelect: React.PropTypes.func.isRequired,
         date: React.PropTypes.object,
         month: React.PropTypes.object,
-        dayClasses: React.PropTypes.func
+        dayClasses: React.PropTypes.func,
+        useNav: React.PropTypes.bool,
+        locale: React.PropTypes.string,
+        startOfWeekIndex: React.PropTypes.number
     },
 
     getDefaultProps() {
         return {
             month: moment(),
-            dayClasses: function() { return [] }
+            dayClasses: function() { return [] },
+            useNav: true,
+            locale: 'en',
+            startOfWeekIndex: 0
         }
     },
 
@@ -35,11 +41,38 @@ export default React.createClass({
         }
     },
 
+    componentWillMount() {
+        moment.locale(this.props.locale);
+
+        if (!!this.state.date) {
+          this.state.date.locale(this.props.locale)
+        }
+
+        this.state.month.locale(this.props.locale)
+    },
+
+    componentWillUpdate(nextProps, nextState) {
+        moment.locale(this.props.locale);
+
+        if (!!nextState.date) {
+          nextState.date.locale(this.props.locale)
+        }
+
+        nextState.month.locale(this.props.locale)
+    },
+
     handleClick(date) {
-        if (this.props.onSelect(date) !== false) {
+        let flag = this.props.onSelect(date, this.state.date);
+
+        if (flag === true) {
             this.setState({
                 date: moment(date)
             });
+        }
+        else if (flag === false) {
+          this.setState({
+            date: null
+          })
         }
     },
 
@@ -56,21 +89,24 @@ export default React.createClass({
     },
 
     render() {
-        let classes = ['Calendar', this.props.className].join(' ');
+        const { startOfWeekIndex } = this.props;
 
-        let actionStyle = {
-            cursor: 'pointer'
-        };
+        let classes = ['Calendar', this.props.className].join(' ');
 
         let today = moment();
 
         let date = this.state.date;
         let month = this.state.month;
 
-        const startOfWeekIndex = 0;
-
         let current = month.clone().startOf('month').day(startOfWeekIndex);
-        let end = month.clone().endOf('month').day(7);
+        if (current.date() > 1 && current.date() < 7) {
+            current.subtract(7, 'd');
+        }
+
+        let end = month.clone().endOf('month').day(7 + startOfWeekIndex);
+        if (end.date() > 7) {
+            end.subtract(7, 'd');
+        }
 
         let elements = [];
         let days = [];
@@ -99,22 +135,44 @@ export default React.createClass({
                     handleClick={this.handleClick} />
             );
             current.add(1, 'days');
-            if (current.day() === 0) {
+            if (current.day() === startOfWeekIndex) {
                 let weekKey = 'week' + week++;
                 elements.push(<Week key={weekKey}>{days}</Week>);
                 days = [];
             }
         }
+
+        let nav
+
+        if (this.props.useNav) {
+          nav = (
+              <tr className="month-header">
+                  <th className="nav previous">
+                      <button className="nav-inner" onClick={this.previous}>«</button>
+                  </th>
+                  <th colSpan="5">
+                      <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
+                  </th>
+                  <th className="nav next">
+                      <button className="nav-inner" onClick={this.next}>»</button>
+                  </th>
+              </tr>
+          )
+        }
+        else {
+          nav = (
+              <tr className="month-header">
+                  <th colSpan="7">
+                      <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
+                  </th>
+              </tr>
+          )
+        }
+
         return (
             <table className={classes}>
                 <thead>
-                    <tr className="month-header">
-                        <th className="previous" onClick={this.previous} style={actionStyle}>«</th>
-                        <th colSpan="5">
-                            <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
-                        </th>
-                        <th className="next" onClick={this.next} style={actionStyle}>»</th>
-                    </tr>
+                    {nav}
                 </thead>
                 <thead>
                     <tr className="days-header">{daysOfWeek}</tr>
@@ -126,5 +184,3 @@ export default React.createClass({
         );
     }
 });
-
-

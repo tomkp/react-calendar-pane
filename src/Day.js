@@ -19,19 +19,16 @@ export default React.createClass({
         if (this.props.selected && this.props.selected.isSame(this.props.date, 'day')) {
             classes.push('selected');
         }
-        let style = {
-            cursor: 'pointer'
-        };
         classes = classes.concat(this.props.classes);
         return (
             <td className={classes.join(' ')}
-                style={style}
                 data-date={this.props.date.toISOString()}
-                data-day={this.props.date.format('D')}
-                onClick={() => this.props.handleClick(this.props.date) }>
-                {this.props.date.format('D')}
+                data-day={this.props.date.format('D')}>
+                <button className="Day-inner"
+                    onClick={() => this.props.handleClick(this.props.date)}>
+                    {this.props.date.format('D')}
+                </button>
             </td>
         );
     }
 });
-

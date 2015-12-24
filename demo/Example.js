@@ -2,15 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Calendar from '../lib/Calendar.js';
 import moment from 'moment';
+import momentFr from 'moment/locale/fr';
 
 
 var Example = React.createClass({
 
-    onSelect: function (date) {
-        if (moment().isSame(date, 'month')) {
-            console.info('onSelect', date);
-        } else {
+    onSelect: function (date, previousDate) {
+        if (moment(date).isSame(previousDate)) {
+            console.info('onSelect: false', date);
             return false;
+        }
+        else if (moment().isSame(date, 'month')) {
+            console.info('onSelect: true', date);
+            return true;
+        }
+        else {
+          console.info('onSelect: none', date);
         }
     },
 
@@ -23,7 +30,14 @@ var Example = React.createClass({
             return([])
         };
         return (
-            <Calendar onSelect={this.onSelect} dayClasses={dayClasses}/>
+            <div>
+                <p>Calendar with weekend</p>
+                <Calendar onSelect={this.onSelect} dayClasses={dayClasses}/>
+                <p>Calendar without nav</p>
+                <Calendar onSelect={this.onSelect} dayClasses={dayClasses} useNav={false}/>
+                <p>French calendar</p>
+                <Calendar onSelect={this.onSelect} dayClasses={dayClasses} locale="fr" startOfWeekIndex={1}/>
+            </div>
         );
     }
 

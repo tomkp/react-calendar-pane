@@ -12,6 +12,7 @@ const expect = chai.expect;
 describe('Calendar', () => {
 
     const onSelect = function(date) {
+        return true
         //console.info('onSelect', date);
     };
 
@@ -83,6 +84,3 @@ describe('Calendar', () => {
         asserter(calendar).assertToday();
     });
 });
-
-
-
