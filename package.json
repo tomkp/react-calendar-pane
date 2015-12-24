@@ -49,7 +49,7 @@
     "test:coverage": "node cover.js && cat lcov.info | coveralls && rm lcov.info",
     "demo": "npm run compile && browserify demo/Example.js -t -o demo/bundle.js",
     "demo:watch": "npm run compile:watch & watchify demo/Example.js -t -o demo/bundle.js",
-    "demo:publish": "npm run compile && browserify demo/Example.js -t -o demo/bundle.js && surge demo hard-to-find-door.surge.sh",
+    "demo:publish": "npm run compile && browserify demo/Example.js -t -o demo/bundle.js && surge demo react-calendar-pane.surge.sh",
     "release:patch": "npm test && npm run compile && npm version patch && git push && npm publish"
   },
   "browserify": {

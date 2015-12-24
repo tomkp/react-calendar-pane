@@ -6,7 +6,7 @@
 
 React calendar component in ES6
 
-Check out the [demo](http://hard-to-find-door.surge.sh/)
+Check out the [demo](http://react-calendar-pane.surge.sh/)
 
 
 install
