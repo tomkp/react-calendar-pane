@@ -14,7 +14,8 @@ export default React.createClass({
         dayClasses: React.PropTypes.func,
         useNav: React.PropTypes.bool,
         locale: React.PropTypes.string,
-        startOfWeekIndex: React.PropTypes.number
+        startOfWeekIndex: React.PropTypes.number,
+        dayRenderer: React.PropTypes.func
     },
 
     getDefaultProps() {
@@ -89,7 +90,7 @@ export default React.createClass({
     },
 
     render() {
-        const { startOfWeekIndex } = this.props;
+        const { startOfWeekIndex, dayRenderer } = this.props;
 
         let classes = ['Calendar', this.props.className].join(' ');
 
@@ -125,14 +126,24 @@ export default React.createClass({
                 dayClasses = dayClasses.concat(['other-month']);
             }
             let isCurrentMonth = current.isSame(month, 'month');
+            let props = {
+                date: current.clone(),
+                selected: date,
+                month: month,
+                today: today,
+                classes: dayClasses,
+                handleClick: this.handleClick,
+            }
+
+            let children
+            if (!!dayRenderer) {
+                children = dayRenderer(props);
+            }
+
             days.push(
-                <Day key={i++}
-                    date={current.clone()}
-                    selected={date}
-                    month={month}
-                    today={today}
-                    classes={dayClasses}
-                    handleClick={this.handleClick} />
+                <Day key={i++} {...props}>
+                    {children}
+                </Day>
             );
             current.add(1, 'days');
             if (current.day() === startOfWeekIndex) {

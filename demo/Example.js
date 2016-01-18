@@ -4,6 +4,14 @@ import Calendar from '../lib/Calendar.js';
 import moment from 'moment';
 import momentFr from 'moment/locale/fr';
 
+function customDayRenderer (props) {
+  return (
+      <a className="Day-inner" href={'#' + props.date.format('YYYY-MM-DD')}
+          onClick={() => props.handleClick(props.date)}>
+          {props.date.format('D')}
+      </a>
+  );
+}
 
 var Example = React.createClass({
 
@@ -37,6 +45,8 @@ var Example = React.createClass({
                 <Calendar onSelect={this.onSelect} dayClasses={dayClasses} useNav={false}/>
                 <p>French calendar</p>
                 <Calendar onSelect={this.onSelect} dayClasses={dayClasses} locale="fr" startOfWeekIndex={1}/>
+                <p>Calendar with custom day renderer</p>
+                <Calendar onSelect={this.onSelect} dayRenderer={customDayRenderer} />
             </div>
         );
     }
