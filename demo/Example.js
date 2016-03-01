@@ -15,12 +15,12 @@ function customDayRenderer (props) {
 
 var Example = React.createClass({
 
-    onSelect: function (date, previousDate) {
+    onSelect: function (date, previousDate, currentMonth) {
         if (moment(date).isSame(previousDate)) {
             console.info('onSelect: false', date);
             return false;
         }
-        else if (moment().isSame(date, 'month')) {
+        else if (currentMonth.isSame(date, 'month')) {
             console.info('onSelect: true', date);
             return true;
         }
