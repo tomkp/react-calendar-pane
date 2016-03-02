@@ -63,7 +63,7 @@ export default React.createClass({
     },
 
     handleClick(date) {
-        let flag = this.props.onSelect(date, this.state.date);
+        let flag = this.props.onSelect(date, this.state.date, this.state.month);
 
         if (flag === true) {
             this.setState({
