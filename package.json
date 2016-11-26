@@ -61,7 +61,6 @@
     "demo:publish": "npm run compile && browserify demo/Example.js -t -o demo/bundle.js && surge demo react-calendar-pane.surge.sh",
     "release:patch": "npm test && npm run compile && npm version patch && git push && npm publish"
   },
-  "pre-commit": ["test"],
   "browserify": {
     "transform": [
       [
