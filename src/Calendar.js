@@ -159,13 +159,13 @@ export default React.createClass({
           nav = (
               <tr className="month-header">
                   <th className="nav previous">
-                      <button className="nav-inner" onClick={this.previous}>«</button>
+                      <button className="nav-inner" onClick={this.previous} type="button">«</button>
                   </th>
                   <th colSpan="5">
                       <span className="month">{month.format('MMMM')}</span> <span className="year">{month.format('YYYY')}</span>
                   </th>
                   <th className="nav next">
-                      <button className="nav-inner" onClick={this.next}>»</button>
+                      <button className="nav-inner" onClick={this.next} type="button">»</button>
                   </th>
               </tr>
           )
