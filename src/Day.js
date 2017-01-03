@@ -28,8 +28,11 @@ export default React.createClass({
         }
         else {
             body = (
-                <button className="Day-inner"
-                    onClick={() => this.props.handleClick(this.props.date)}>
+                <button
+                    className="Day-inner"
+                    onClick={() => this.props.handleClick(this.props.date)}
+                    type="button"
+                >
                     {this.props.date.format('D')}
                 </button>
             )
