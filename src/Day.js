@@ -1,15 +1,17 @@
+import PropTypes from 'prop-types';
+import createClass from 'create-react-class';
 import React from 'react';
 
 
-export default React.createClass({
+export default createClass({
 
     propTypes: {
-        handleClick: React.PropTypes.func.isRequired,
-        date: React.PropTypes.object.isRequired,
+        handleClick: PropTypes.func.isRequired,
+        date: PropTypes.object.isRequired,
         //month: React.PropTypes.object.isRequired,
-        today: React.PropTypes.object.isRequired,
-        selected: React.PropTypes.object,
-        children: React.PropTypes.node
+        today: PropTypes.object.isRequired,
+        selected: PropTypes.object,
+        children: PropTypes.node
     },
 
     render() {

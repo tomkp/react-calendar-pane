@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+import createClass from 'create-react-class';
 import React from 'react';
 import moment from 'moment';
 import Day from './Day';
@@ -5,17 +7,17 @@ import DayOfWeek from './DayOfWeek';
 import Week from './Week';
 
 
-export default React.createClass({
+export default createClass({
 
     propTypes: {
-        onSelect: React.PropTypes.func.isRequired,
-        date: React.PropTypes.object,
-        month: React.PropTypes.object,
-        dayClasses: React.PropTypes.func,
-        useNav: React.PropTypes.bool,
-        locale: React.PropTypes.string,
-        startOfWeekIndex: React.PropTypes.number,
-        dayRenderer: React.PropTypes.func
+        onSelect: PropTypes.func.isRequired,
+        date: PropTypes.object,
+        month: PropTypes.object,
+        dayClasses: PropTypes.func,
+        useNav: PropTypes.bool,
+        locale: PropTypes.string,
+        startOfWeekIndex: PropTypes.number,
+        dayRenderer: PropTypes.func
     },
 
     getDefaultProps() {
