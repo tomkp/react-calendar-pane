@@ -1,3 +1,4 @@
+import createClass from 'create-react-class';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Calendar from '../lib/Calendar.js';
@@ -13,7 +14,7 @@ function customDayRenderer (props) {
   );
 }
 
-var Example = React.createClass({
+var Example = createClass({
 
     onSelect: function (date, previousDate, currentMonth) {
         if (moment(date).isSame(previousDate)) {

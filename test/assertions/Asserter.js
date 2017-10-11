@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 import Calendar from '../../src/Calendar';
 import chai from 'chai';

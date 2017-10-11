@@ -1,7 +1,10 @@
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+
 import moment from 'moment';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 import Calendar from '../src/Calendar';
 import asserter from './assertions/Asserter';
 import chai from 'chai';
