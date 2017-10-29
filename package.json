@@ -2,7 +2,7 @@
   "name": "react-calendar-pane",
   "description": "React calendar component",
   "main": "./lib/Calendar.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/tomkp/react-calendar-pane"
