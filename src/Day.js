@@ -1,17 +1,7 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import createClass from 'create-react-class';
-import React from 'react';
 
-export default createClass({
-  propTypes: {
-    handleClick: PropTypes.func.isRequired,
-    date: PropTypes.object.isRequired,
-    //month: React.PropTypes.object.isRequired,
-    today: PropTypes.object.isRequired,
-    selected: PropTypes.object,
-    children: PropTypes.node,
-  },
-
+class Day extends Component {
   render() {
     let classes = ['Day'];
     if (this.props.today.isSame(this.props.date, 'day')) {
@@ -49,5 +39,16 @@ export default createClass({
         {body}
       </td>
     );
-  },
-});
+  }
+}
+
+Day.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  date: PropTypes.object.isRequired,
+  //month: React.PropTypes.object.isRequired,
+  today: PropTypes.object.isRequired,
+  selected: PropTypes.object,
+  children: PropTypes.node,
+};
+
+export default Day;

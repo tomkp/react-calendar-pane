@@ -1,48 +1,30 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import createClass from 'create-react-class';
-import React from 'react';
+
 import moment from 'moment';
 import Day from './Day';
 import DayOfWeek from './DayOfWeek';
 import Week from './Week';
 
-export default createClass({
-  propTypes: {
-    onSelect: PropTypes.func.isRequired,
-    date: PropTypes.object,
-    month: PropTypes.object,
-    dayClasses: PropTypes.func,
-    useNav: PropTypes.bool,
-    locale: PropTypes.string,
-    startOfWeekIndex: PropTypes.number,
-    dayRenderer: PropTypes.func,
-  },
-
-  getDefaultProps() {
-    return {
-      month: moment(),
-      dayClasses: function() {
-        return [];
-      },
-      useNav: true,
-      locale: 'en',
-      startOfWeekIndex: 0,
-    };
-  },
-
-  getInitialState() {
-    let date = this.props.date;
+class Calendar extends Component {
+  constructor(props) {
+    super(props);
+    let date = props.date;
     let month;
     if (date) {
-      month = this.props.date;
+      month = props.date;
     } else {
-      month = this.props.month;
+      month = props.month;
     }
-    return {
+    this.state = {
       date: date,
       month: month,
     };
-  },
+
+    this.previous = this.previous.bind(this);
+    this.next = this.next.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
   componentWillMount() {
     moment.locale(this.props.locale);
@@ -52,7 +34,7 @@ export default createClass({
     }
 
     this.state.month.locale(this.props.locale);
-  },
+  }
 
   componentWillUpdate(nextProps, nextState) {
     moment.locale(this.props.locale);
@@ -62,7 +44,7 @@ export default createClass({
     }
 
     nextState.month.locale(this.props.locale);
-  },
+  }
 
   handleClick(date) {
     let flag = this.props.onSelect(date, this.state.date, this.state.month);
@@ -76,19 +58,19 @@ export default createClass({
         date: null,
       });
     }
-  },
+  }
 
   previous() {
     this.setState({
       month: moment(this.state.month).subtract(1, 'month'),
     });
-  },
+  }
 
   next() {
     this.setState({
       month: moment(this.state.month).add(1, 'month'),
     });
-  },
+  }
 
   render() {
     const { startOfWeekIndex, dayRenderer } = this.props;
@@ -201,5 +183,24 @@ export default createClass({
         <tbody>{elements}</tbody>
       </table>
     );
-  },
-});
+  }
+}
+Calendar.defaultProps = {
+  month: moment(),
+  dayClasses: () => [],
+  useNav: true,
+  locale: 'en',
+  startOfWeekIndex: 0,
+};
+Calendar.propTypes = {
+  onSelect: PropTypes.func.isRequired,
+  date: PropTypes.object,
+  month: PropTypes.object,
+  dayClasses: PropTypes.func,
+  useNav: PropTypes.bool,
+  locale: PropTypes.string,
+  startOfWeekIndex: PropTypes.number,
+  dayRenderer: PropTypes.func,
+};
+
+export default Calendar;
