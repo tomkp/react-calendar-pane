@@ -27,7 +27,9 @@ build the demo
 ```
 
 <div align="center">
-  <img src="docs/cap1.png" style="margin:1rem;" />
+  <img src="docs/cap2.png" style="margin:1rem;display:block;" />
+  <img src="docs/cap3.png" style="margin:1rem;display:block;" />
+  <img src="docs/cap4.png" style="margin:1rem;display:block;" />
 </div>
 
 ### Example css
