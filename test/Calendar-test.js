@@ -3,8 +3,6 @@ import 'core-js/es6/set';
 
 import moment from 'moment';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-dom/test-utils';
 import Calendar from '../src/Calendar';
 import asserter from './assertions/Asserter';
 import chai from 'chai';
@@ -12,10 +10,7 @@ import chai from 'chai';
 const expect = chai.expect;
 
 describe('Calendar', () => {
-  const onSelect = function(date) {
-    return true;
-    //console.info('onSelect', date);
-  };
+  const onSelect = () => true;
 
   it('displays the correct year', () => {
     const calendar = (
@@ -53,10 +48,8 @@ describe('Calendar', () => {
       .assertMonth('May');
   });
 
-  it('should trigger the callback with selected date when clicking a day', function(
-    done
-  ) {
-    const callback = function(selectedDate) {
+  it('should trigger the callback with selected date when clicking a day', done => {
+    const callback = selectedDate => {
       expect(moment(selectedDate).format('DD/MM/YYYY')).to.equal('08/04/2015');
       done();
     };
