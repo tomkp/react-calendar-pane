@@ -379,6 +379,16 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
+function _toConsumableArray(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }return arr2;
+  } else {
+    return Array.from(arr);
+  }
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -409,34 +419,39 @@ var Day = function (_Component) {
   _createClass(Day, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _props = this.props,
+          today = _props.today,
+          date = _props.date,
+          selected = _props.selected,
+          classes = _props.classes,
+          handleClick = _props.handleClick,
+          children = _props.children;
 
-      var classes = ['Day'];
-      if (this.props.today.isSame(this.props.date, 'day')) {
-        classes.push('today');
+      var classNames = ['Day'];
+      if (today.isSame(date, 'day')) {
+        classNames.push('today');
       }
-      if (this.props.selected && this.props.selected.isSame(this.props.date, 'day')) {
-        classes.push('selected');
+      if (selected && selected.isSame(date, 'day')) {
+        classNames.push('selected');
       }
-      classes = classes.concat(this.props.classes);
 
       var body = void 0;
-      if (!!this.props.children) {
-        body = this.props.children;
+      if (!!children) {
+        body = children;
       } else {
         body = _react2.default.createElement('button', {
           className: 'Day-inner',
           onClick: function onClick() {
-            return _this2.props.handleClick(_this2.props.date);
+            return handleClick(date);
           },
           type: 'button'
-        }, this.props.date.format('D'));
+        }, date.format('D'));
       }
 
       return _react2.default.createElement('td', {
-        className: classes.join(' '),
-        'data-date': this.props.date.toISOString(),
-        'data-day': this.props.date.format('D')
+        className: [].concat(classNames, _toConsumableArray(classes)).join(' '),
+        'data-date': date.toISOString(),
+        'data-day': date.format('D')
       }, body);
     }
   }]);
@@ -447,7 +462,6 @@ var Day = function (_Component) {
 Day.propTypes = {
   handleClick: _propTypes2.default.func.isRequired,
   date: _propTypes2.default.object.isRequired,
-  //month: React.PropTypes.object.isRequired,
   today: _propTypes2.default.object.isRequired,
   selected: _propTypes2.default.object,
   children: _propTypes2.default.node
@@ -460,7 +474,7 @@ module.exports = exports['default'];
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = require('react');
@@ -476,16 +490,16 @@ var _moment = require('moment');
 var _moment2 = _interopRequireDefault(_moment);
 
 function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
+  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 var DayOfWeek = function DayOfWeek(_ref) {
-    var date = _ref.date;
-    return _react2.default.createElement('th', { className: 'DayOfWeek' }, date.format('dd'));
+  var date = _ref.date;
+  return _react2.default.createElement('th', { className: 'DayOfWeek' }, date.format('dd'));
 };
 
 DayOfWeek.propTypes = {
-    date: _propTypes2.default.instanceOf(_moment2.default).isRequired
+  date: _propTypes2.default.instanceOf(_moment2.default).isRequired
 };
 
 exports.default = DayOfWeek;
