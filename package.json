@@ -89,7 +89,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier --single-quote --trailing-comma es5 --write './{src,test}/**/*.js'",
+      "prettier --write",
       "git add"
     ]
   }
