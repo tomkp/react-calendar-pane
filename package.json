@@ -67,7 +67,6 @@
     "demo": "npm run compile && browserify demo/Example.js -t -o demo/bundle.js",
     "demo:watch": "npm run compile:watch & watchify demo/Example.js -t -o demo/bundle.js",
     "demo:publish": "npm run compile && browserify demo/Example.js -t -o demo/bundle.js && surge demo react-calendar-pane.surge.sh",
-    "precommit": "lint-staged",
     "prettier": "prettier --single-quote --trailing-comma es5 --write './{src,test,demo}/**/*.js'",
     "release:patch": "npm test && npm run compile && npm version patch && git push && npm publish"
   },
@@ -85,12 +84,6 @@
     ],
     "plugins": [
       "add-module-exports"
-    ]
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
     ]
   }
 }
