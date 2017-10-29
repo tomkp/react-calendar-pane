@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
 
-class Week extends Component {
-  render() {
-    return <th className="DayOfWeek">{this.props.date.format('dd')}</th>;
-  }
-}
 
-export default Week;
+const DayOfWeek = ({date}) => <th className="DayOfWeek">{date.format('dd')}</th>;
+
+DayOfWeek.propTypes = {
+    date: PropTypes.instanceOf(moment).isRequired,
+};
+
+export default DayOfWeek;

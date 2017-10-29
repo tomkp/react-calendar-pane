@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Week extends Component {
-  render() {
-    return <tr className="Week">{this.props.children}</tr>;
-  }
-}
+const Week = ({children}) => <tr className="Week">{children}</tr>;
 
 export default Week;
