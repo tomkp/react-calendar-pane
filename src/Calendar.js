@@ -47,7 +47,7 @@ class Calendar extends Component {
   }
 
   handleClick(date) {
-    let flag = this.props.onSelect(date, this.state.date, this.state.month);
+    const flag = this.props.onSelect(date, this.state.date, this.state.month);
 
     if (flag === true) {
       this.setState({
@@ -75,14 +75,14 @@ class Calendar extends Component {
   render() {
     const { startOfWeekIndex, dayRenderer } = this.props;
 
-    let classes = ['Calendar', this.props.className].join(' ');
+    const classes = ['Calendar', this.props.className].join(' ');
 
-    let today = moment();
+    const today = moment();
 
-    let date = this.state.date;
-    let month = this.state.month;
+    const date = this.state.date;
+    const month = this.state.month;
 
-    let current = month
+    const current = month
       .clone()
       .startOf('month')
       .day(startOfWeekIndex);
@@ -90,22 +90,23 @@ class Calendar extends Component {
       current.subtract(7, 'd');
     }
 
-    let end = month
+    const end = month
       .clone()
       .endOf('month')
       .day(7 + startOfWeekIndex);
+
     if (end.date() > 7) {
       end.subtract(7, 'd');
     }
 
-    let elements = [];
+    const elements = [];
     let days = [];
     let week = 1;
     let i = 1;
-    let daysOfWeek = [];
-    let day = current.clone();
+    const daysOfWeek = [];
+    const day = current.clone();
     for (let j = 0; j < 7; j++) {
-      let dayOfWeekKey = 'dayOfWeek' + j;
+      const dayOfWeekKey = 'dayOfWeek' + j;
       daysOfWeek.push(<DayOfWeek key={dayOfWeekKey} date={day.clone()} />);
       day.add(1, 'days');
     }
@@ -114,7 +115,6 @@ class Calendar extends Component {
       if (!current.isSame(month, 'month')) {
         dayClasses = dayClasses.concat(['other-month']);
       }
-      let isCurrentMonth = current.isSame(month, 'month');
       let props = {
         date: current.clone(),
         selected: date,
