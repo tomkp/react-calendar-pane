@@ -85,7 +85,7 @@ describe('Calendar', () => {
         <Calendar date={moment()} onSelect={onSelect} dayOfWeekFormat={format} />
       );
   
-      asserter(calendar).assertFailingDayOfTheWeek(format);
+      asserter(calendar).assertFailingDayOfTheWeek();
     });
   });
 
