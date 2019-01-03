@@ -79,6 +79,11 @@ class Calendar extends Component {
 
     const today = moment();
 
+    const format = dayOfWeekFormat &&
+                    typeof dayOfWeekFormat === 'string' && 
+                    dayOfWeekFormat !== '' &&
+                    moment(today, dayOfWeekFormat).isValid() ? dayOfWeekFormat : 'dd'
+
     const date = this.state.date;
     const month = this.state.month;
 
@@ -107,7 +112,7 @@ class Calendar extends Component {
     const day = current.clone();
     for (let j = 0; j < 7; j++) {
       const dayOfWeekKey = 'dayOfWeek' + j;
-      daysOfWeek.push(<DayOfWeek key={dayOfWeekKey} date={day.clone()} format={dayOfWeekFormat} />);
+      daysOfWeek.push(<DayOfWeek key={dayOfWeekKey} date={day.clone()} format={format} />);
       day.add(1, 'days');
     }
     while (current.isBefore(end)) {

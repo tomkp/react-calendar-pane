@@ -1,6 +1,8 @@
 import moment from 'moment';
 import React from 'react';
-import { findDOMNode } from 'react-dom';
+import {
+  findDOMNode
+} from 'react-dom';
 import {
   Simulate,
   scryRenderedDOMComponentsWithClass,
@@ -61,6 +63,34 @@ export default jsx => {
         return +value === date;
       });
       Simulate.click(found[0].firstChild);
+      return this;
+    },
+
+    assertDayOfTheWeek(format) {
+      const daysOfTheWeek = scryRenderedDOMComponentsWithClass(calendar, 'DayOfWeek');
+      let currentDayOfTheWeek = 0;
+
+      daysOfTheWeek.forEach((dayOfTheWeek) => {
+        const value = findDOMNode(dayOfTheWeek).textContent;
+        expect(value).to.equal(moment(currentDayOfTheWeek, 'd').format(format));
+
+        currentDayOfTheWeek++;
+      })
+
+      return this;
+    },
+
+    assertFailingDayOfTheWeek(format) {
+      const daysOfTheWeek = scryRenderedDOMComponentsWithClass(calendar, 'DayOfWeek');
+      let currentDayOfTheWeek = 0;
+
+      daysOfTheWeek.forEach((dayOfTheWeek) => {
+        const value = findDOMNode(dayOfTheWeek).textContent;
+        expect(value).to.equal(moment(currentDayOfTheWeek, 'd').format('dd'));
+
+        currentDayOfTheWeek++;
+      });
+
       return this;
     },
   };
