@@ -80,7 +80,7 @@ export default jsx => {
       return this;
     },
 
-    assertFailingDayOfTheWeek(format) {
+    assertFailingDayOfTheWeek() {
       const daysOfTheWeek = scryRenderedDOMComponentsWithClass(calendar, 'DayOfWeek');
       let currentDayOfTheWeek = 0;
 
