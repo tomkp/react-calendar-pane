@@ -77,7 +77,7 @@ describe('Calendar', () => {
     asserter(calendar).assertToday();
   });
 
-  it('fails when trying to display day of the week following a given format', () => {
+  it("day of week format defaults to 'dd' when format is invalid", () => {
     const formats = ['', null];
 
     formats.forEach((format) => {
@@ -85,7 +85,7 @@ describe('Calendar', () => {
         <Calendar date={moment()} onSelect={onSelect} dayOfWeekFormat={format} />
       );
   
-      asserter(calendar).assertFailingDayOfTheWeek();
+      asserter(calendar).assertDayOfTheWeek(format);
     });
   });
 

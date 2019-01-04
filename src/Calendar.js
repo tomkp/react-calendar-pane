@@ -80,7 +80,6 @@ class Calendar extends Component {
     const today = moment();
 
     const format = dayOfWeekFormat &&
-                    typeof dayOfWeekFormat === 'string' && 
                     dayOfWeekFormat !== '' &&
                     moment(today, dayOfWeekFormat).isValid() ? dayOfWeekFormat : 'dd'
 

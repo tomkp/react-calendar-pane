@@ -66,30 +66,20 @@ export default jsx => {
       return this;
     },
 
-    assertDayOfTheWeek(format) {
+    assertDayOfTheWeek(dayOfWeekFormat) {
       const daysOfTheWeek = scryRenderedDOMComponentsWithClass(calendar, 'DayOfWeek');
       let currentDayOfTheWeek = 0;
 
       daysOfTheWeek.forEach((dayOfTheWeek) => {
+        const currentDate = moment(currentDayOfTheWeek, 'd');
+        const format = dayOfWeekFormat && dayOfWeekFormat !== '' &&
+                        moment(currentDate, dayOfWeekFormat).isValid() ? dayOfWeekFormat : 'dd';
         const value = findDOMNode(dayOfTheWeek).textContent;
-        expect(value).to.equal(moment(currentDayOfTheWeek, 'd').format(format));
+
+        expect(value).to.equal(moment(currentDate).format(format));
 
         currentDayOfTheWeek++;
       })
-
-      return this;
-    },
-
-    assertFailingDayOfTheWeek() {
-      const daysOfTheWeek = scryRenderedDOMComponentsWithClass(calendar, 'DayOfWeek');
-      let currentDayOfTheWeek = 0;
-
-      daysOfTheWeek.forEach((dayOfTheWeek) => {
-        const value = findDOMNode(dayOfTheWeek).textContent;
-        expect(value).to.equal(moment(currentDayOfTheWeek, 'd').format('dd'));
-
-        currentDayOfTheWeek++;
-      });
 
       return this;
     },
