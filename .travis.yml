@@ -1,6 +1,10 @@
 language: node_js
+sudo: required
+dist: trusty
 node_js:
-  - "stable"
+  - stable
+script:
+  - npm test
 after_script:
   - npm run test:coverage
-  - npm run demo:publish
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run demo:publish || false'
