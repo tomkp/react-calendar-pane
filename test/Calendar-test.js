@@ -76,4 +76,28 @@ describe('Calendar', () => {
 
     asserter(calendar).assertToday();
   });
+
+  it("day of week format defaults to 'dd' when format is invalid", () => {
+    const formats = ['', null];
+
+    formats.forEach((format) => {
+      const calendar = (
+        <Calendar date={moment()} onSelect={onSelect} dayOfWeekFormat={format} />
+      );
+  
+      asserter(calendar).assertDayOfTheWeek(format);
+    });
+  });
+
+  it('displays day of the week following a given format', () => {
+    const formats = ['d', 'dd', 'ddd', 'dddd'];
+
+    formats.forEach((format) => {
+      const calendar = (
+        <Calendar date={moment()} onSelect={onSelect} dayOfWeekFormat={format} />
+      );
+  
+      asserter(calendar).assertDayOfTheWeek(format);
+    });
+  });
 });

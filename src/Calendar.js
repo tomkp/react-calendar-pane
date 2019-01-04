@@ -73,11 +73,15 @@ class Calendar extends Component {
   }
 
   render() {
-    const { startOfWeekIndex, dayRenderer } = this.props;
+    const { startOfWeekIndex, dayRenderer, dayOfWeekFormat } = this.props;
 
     const classes = ['Calendar', this.props.className].join(' ');
 
     const today = moment();
+
+    const format = dayOfWeekFormat &&
+                    dayOfWeekFormat !== '' &&
+                    moment(today, dayOfWeekFormat).isValid() ? dayOfWeekFormat : 'dd'
 
     const date = this.state.date;
     const month = this.state.month;
@@ -107,7 +111,7 @@ class Calendar extends Component {
     const day = current.clone();
     for (let j = 0; j < 7; j++) {
       const dayOfWeekKey = 'dayOfWeek' + j;
-      daysOfWeek.push(<DayOfWeek key={dayOfWeekKey} date={day.clone()} />);
+      daysOfWeek.push(<DayOfWeek key={dayOfWeekKey} date={day.clone()} format={format} />);
       day.add(1, 'days');
     }
     while (current.isBefore(end)) {
@@ -191,6 +195,7 @@ Calendar.defaultProps = {
   useNav: true,
   locale: 'en',
   startOfWeekIndex: 0,
+  dayOfWeekFormat: 'dd',
 };
 Calendar.propTypes = {
   onSelect: PropTypes.func.isRequired,
@@ -201,6 +206,7 @@ Calendar.propTypes = {
   locale: PropTypes.string,
   startOfWeekIndex: PropTypes.number,
   dayRenderer: PropTypes.func,
+  dayOfWeekFormat: PropTypes.string,
 };
 
 export default Calendar;
