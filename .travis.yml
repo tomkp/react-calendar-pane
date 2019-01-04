@@ -3,4 +3,8 @@ node_js:
   - "stable"
 after_script:
   - npm run test:coverage
-  - npm run demo:publish
+  - npm run demo
+deploy:
+  provider: surge
+  project: ./demo/
+  domain: react-calendar-pane.surge.sh
